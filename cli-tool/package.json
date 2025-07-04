@@ -1,6 +1,6 @@
 {
   "name": "claude-config-init",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLI tool to setup Claude Code configurations for different programming languages",
   "main": "src/index.js",
   "bin": {
