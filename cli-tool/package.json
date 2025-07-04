@@ -1,0 +1,51 @@
+{
+  "name": "claude-config-init",
+  "version": "1.0.3",
+  "description": "CLI tool to setup Claude Code configurations for different programming languages",
+  "main": "src/index.js",
+  "bin": {
+    "create-claude-config": "bin/create-claude-config.js",
+    "claude-config-init": "bin/create-claude-config.js",
+    "claude-init": "bin/create-claude-config.js"
+  },
+  "scripts": {
+    "start": "node bin/create-claude-config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai",
+    "configuration",
+    "template",
+    "setup",
+    "cli"
+  ],
+  "author": "Claude Code Templates",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^8.2.6",
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.1.1",
+    "commander": "^11.1.0",
+    "ora": "^5.4.1",
+    "boxen": "^5.1.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danipower/claude-code-templates.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danipower/claude-code-templates/issues"
+  },
+  "homepage": "https://github.com/danipower/claude-code-templates#readme",
+  "files": [
+    "bin/",
+    "src/",
+    "templates/",
+    "README.md"
+  ]
+}
