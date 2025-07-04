@@ -49,7 +49,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "if [[ \"$(jq -r '.tool_input.file_path' | grep -E '\\.js$|\\.jsx$|\\.ts$|\\.tsx$')\" != \"\" && $(jq -r '.tool_input.content' | grep -E 'console\\.log') != \"\" ]]; then echo 'Warning: console.log statements should be removed before committing' >&2; fi"
+            "command": "if [[ \"$(echo $STDIN_JSON | jq -r '.tool_input.file_path' | grep -E '\\.js$|\\.jsx$|\\.ts$|\\.tsx$')\" != \"\" && $(echo $STDIN_JSON | jq -r '.tool_input.content' | grep -E 'console\\.log') != \"\" ]]; then echo 'Warning: console.log statements should be removed before committing' >&2; exit 2; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" == \"package.json\" ]]; then echo 'Checking for vulnerable dependencies...'; npx audit-ci --moderate; fi",
+            "timeout": 60
           }
         ]
       }
@@ -70,8 +80,27 @@
         "hooks": [
           {
             "type": "command",
-            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.(ts|tsx)$ ]]; then npx tsc --noEmit; fi",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.(ts|tsx)$ ]]; then RESULT=$(npx tsc --noEmit 2>&1); if [ $? -ne 0 ]; then echo \"TypeScript errors found: $RESULT\" >&2; exit 2; fi; fi",
             "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.(ts|tsx)$ ]] && grep -q 'import.*from.*\\*' \"$FILE\"; then echo 'Warning: Avoid wildcard imports for better tree-shaking' >&2; exit 2; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.(js|jsx|ts|tsx)$ && \"$FILE\" != *\".test.\"* && \"$FILE\" != *\".spec.\"* ]]; then TEST_FILE=$(echo \"$FILE\" | sed -E 's/\\.(js|jsx|ts|tsx)$/.test.\\1/'); if [ -f \"$TEST_FILE\" ]; then echo \"Running tests for modified file...\"; npx jest \"$TEST_FILE\" --passWithNoTests; fi; fi",
+            "timeout": 60
           }
         ]
       }
@@ -94,6 +123,16 @@
           {
             "type": "command",
             "command": "if [[ -f package.json && $(git status --porcelain | grep -E '\\.js$|\\.jsx$|\\.ts$|\\.tsx$') ]]; then echo 'Running linter on changed files...'; npx eslint $(git diff --name-only --diff-filter=ACMR | grep -E '\\.js$|\\.jsx$|\\.ts$|\\.tsx$'); fi",
+            "timeout": 60
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ -f package.json && $(git status --porcelain | grep -E '\\.js$|\\.jsx$|\\.ts$|\\.tsx$') ]]; then echo 'Analyzing bundle size impact...'; npx bundlesize; fi",
             "timeout": 60
           }
         ]

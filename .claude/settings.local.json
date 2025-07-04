@@ -9,7 +9,19 @@
       "Bash(npm whoami:*)",
       "Bash(npm publish:*)",
       "Bash(npm pkg:*)",
-      "Bash(npm logout)"
+      "Bash(npm logout)",
+      "Bash(node:*)",
+      "Bash(npm test)",
+      "Bash(ls:*)",
+      "Bash(/usr/local/bin/npm whoami)",
+      "Bash(npm view:*)",
+      "Bash(npm run sync:*)",
+      "Bash(find:*)",
+      "Bash(rm:*)",
+      "Bash(true)",
+      "Bash(grep:*)",
+      "Bash(echo:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }

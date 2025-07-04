@@ -1,233 +1,259 @@
-# JavaScript/TypeScript Claude Code Templates
+# JavaScript/TypeScript Templates
 
-This template provides optimized Claude Code configurations for JavaScript and TypeScript development, including modern frameworks like React, Vue, Node.js, and more.
+**Claude Code configuration template optimized for modern JavaScript and TypeScript development**
 
-## Quick Start
+This folder contains a comprehensive Claude Code template specifically designed for JavaScript and TypeScript projects, supporting popular frameworks like React, Vue.js, Angular, and Node.js.
 
-### Installation
-Copy the template files to your JavaScript/TypeScript project:
+## 📁 What's in This Folder
 
-```bash
-# Copy all template files
-cp -r claude-code-templates/javascript-typescript/* your-project/
+This template provides the foundation for JavaScript/TypeScript development with Claude Code:
 
-# Or copy specific files
-cp claude-code-templates/javascript-typescript/CLAUDE.md your-project/
-cp -r claude-code-templates/javascript-typescript/.claude/ your-project/
-```
+### 📄 Files Included
+- **`CLAUDE.md`** - Complete JavaScript/TypeScript development guidance for Claude Code
+- **`README.md`** - This documentation file
 
-### Usage
-Navigate to your project and start Claude Code:
-
-```bash
-cd your-project
-claude
-```
-
-Use the included custom commands:
-```bash
-# Run tests
-/test
-
-# Run linting
-/lint
-
-# Create React component
-/react-component
-
-# Debug application
-/debug
-```
-
-## What's Included
-
-### Core Configuration
-- **`CLAUDE.md`** - Comprehensive guidance for JavaScript/TypeScript development
+### 🎯 Template Features
+When you use this template with the installer, it automatically creates:
 - **`.claude/settings.json`** - Optimized settings for JS/TS projects
-- **Custom Commands** - Pre-configured commands for common development tasks
+- **`.claude/commands/`** - Ready-to-use commands for common tasks
 
-### Development Hooks
-- **`format-on-save.json`** - Automatically format code with Prettier
-- **`lint-on-save.json`** - Run ESLint on file changes
-- **`typescript-check.json`** - Verify TypeScript types on save
+## 🚀 How to Use This Template
 
-### Custom Commands
-- **`test.md`** - Execute tests with Jest, Vitest, or other frameworks
-- **`lint.md`** - Run ESLint with customizable rules
-- **`debug.md`** - Debug Node.js applications and browser code
-- **`refactor.md`** - Refactor code with AI assistance
-- **`typescript-migrate.md`** - Migrate JavaScript files to TypeScript
-- **`npm-scripts.md`** - Manage and execute npm scripts
-- **`react-component.md`** - Generate React components with best practices
-- **`api-endpoint.md`** - Create API endpoints for Node.js applications
+### Option 1: Automated Installation (Recommended)
+Use the CLI installer to automatically set up this template in your project:
 
-### Project Examples
-- **React App** - Configuration for React applications
-- **Node.js API** - Configuration for backend API development
-
-## Framework-Specific Setup
-
-### React Projects
 ```bash
-# Copy React-specific configuration
-cp -r claude-code-templates/javascript-typescript/examples/react-app/.claude/ your-react-app/
+cd your-javascript-project
+npx claude-code-templates --language javascript-typescript
 ```
 
-Additional commands for React:
-- `/component` - Create React components
-- `/hooks` - Generate custom React hooks
+The installer will:
+- Copy the `CLAUDE.md` file to your project
+- Auto-detect your framework (React, Vue, Node.js, etc.)
+- Create appropriate `.claude/` configuration files
+- Set up framework-specific commands
+- Configure development workflows
 
-### Node.js API Projects
+### Option 2: Manual Installation
+Copy the template manually for more control:
+
 ```bash
-# Copy Node.js-specific configuration
-cp -r claude-code-templates/javascript-typescript/examples/node-api/.claude/ your-api-project/
+# Clone the repository
+git clone https://github.com/danipower/claude-code-templates.git
+
+# Copy the JavaScript/TypeScript template
+cp claude-code-templates/javascript-typescript/CLAUDE.md your-project/
+
+# Then use the CLI to complete the setup
+cd your-project
+npx claude-code-templates --language javascript-typescript
 ```
 
-Additional commands for Node.js:
-- `/route` - Create API routes
-- `/middleware` - Generate middleware functions
+## 🎨 Framework Support
 
-## Supported Tools and Frameworks
-
-### Package Managers
-- **npm** - Node Package Manager
-- **yarn** - Fast, reliable package manager
-- **pnpm** - Efficient package manager
-
-### Build Tools
-- **Vite** - Next generation frontend tooling
-- **Webpack** - Module bundler
-- **Rollup** - Module bundler for libraries
-- **esbuild** - Extremely fast JavaScript bundler
-
-### Testing Frameworks
-- **Jest** - JavaScript testing framework
-- **Vitest** - Fast unit test framework
-- **Testing Library** - Testing utilities
-- **Cypress** - End-to-end testing
-- **Playwright** - Cross-browser testing
-
-### Code Quality
-- **ESLint** - JavaScript/TypeScript linter
-- **Prettier** - Code formatter
-- **TypeScript** - Static type checking
-- **Husky** - Git hooks
+This template automatically configures Claude Code for:
 
 ### Frontend Frameworks
-- **React** - UI library
-- **Vue.js** - Progressive framework
-- **Angular** - Full-featured framework
-- **Svelte** - Compile-time framework
+- **React** - Components, hooks, JSX, testing with React Testing Library
+- **Vue.js** - Composition API, single-file components, state management
+- **Angular** - TypeScript-first development, RxJS patterns, CLI integration
+- **Svelte** - Compile-time optimizations, modern JavaScript patterns
 
 ### Backend Frameworks
-- **Express.js** - Web framework for Node.js
-- **Fastify** - Fast and low overhead web framework
-- **Koa** - Lightweight web framework
-- **NestJS** - Progressive Node.js framework
+- **Express.js** - RESTful APIs, middleware, error handling
+- **Fastify** - High-performance Node.js applications
+- **NestJS** - Enterprise-grade TypeScript framework
+- **Next.js** - Full-stack React applications with SSR/SSG
 
-## Common Development Workflows
+### Build Tools & Testing
+- **Vite, Webpack, esbuild** - Modern build tool configurations
+- **Jest, Vitest, Cypress** - Testing framework optimization
+- **ESLint, Prettier, TypeScript** - Code quality and formatting
 
-### Setting Up a New Project
-1. Initialize project: `npm init` or `yarn init`
-2. Install dependencies: `npm install` or `yarn install`
-3. Copy Claude Code templates
-4. Configure ESLint and Prettier
-5. Set up testing framework
-6. Configure build tools
+## 🛠️ Commands Created by the Template
 
-### Daily Development
-1. Start development server: `npm run dev`
-2. Use Claude Code commands for common tasks
-3. Run tests: `/test`
-4. Format and lint code: `/lint`
-5. Debug issues: `/debug`
+When installed, this template provides commands for:
 
-### Code Quality Checks
-1. Type checking: `npm run typecheck`
-2. Linting: `npm run lint`
-3. Testing: `npm run test`
-4. Build verification: `npm run build`
+### 🧪 Testing & Quality
+- **`/test`** - Run tests with Jest, Vitest, or other frameworks
+- **`/lint`** - ESLint with auto-fix capabilities
+- **`/typescript-migrate`** - Convert JavaScript files to TypeScript
 
-## Customization
+### 🔧 Development Tools
+- **`/debug`** - Debug Node.js applications and browser code
+- **`/refactor`** - AI-assisted code refactoring
+- **`/npm-scripts`** - Manage and execute npm/yarn scripts
 
-### Modifying Commands
-Edit files in `.claude/commands/` to customize commands for your workflow:
+### ⚡ Framework-Specific Commands
+- **`/react-component`** - Generate React components (React projects)
+- **`/api-endpoint`** - Create Express.js endpoints (Node.js projects)
+- **`/route`** - Create API routes (Node.js projects)
+- **`/component`** - Create components (React/Vue projects)
 
+## 🎯 What Happens When You Install
+
+### Step 1: Framework Detection
+The installer analyzes your project to detect:
+- Package.json dependencies
+- Project structure
+- Framework type (React, Vue, Angular, Node.js)
+
+### Step 2: Template Configuration  
+Based on detection, it creates:
+```
+your-project/
+├── CLAUDE.md                    # Copied from this template
+├── .claude/
+│   ├── settings.json           # Framework-specific settings
+│   └── commands/               # Commands for your framework
+│       ├── test.md
+│       ├── lint.md
+│       ├── debug.md
+│       └── [framework-specific commands]
+```
+
+### Step 3: Framework Customization
+For specific frameworks, additional commands are added:
+
+**React Projects:**
+- Component generation with TypeScript support
+- React hooks creation and management
+- Testing with React Testing Library patterns
+
+**Node.js Projects:**
+- RESTful API endpoint creation
+- Middleware development patterns
+- Database integration helpers
+
+**Vue.js Projects:**
+- Single-file component templates
+- Composition API patterns
+- Vue 3 best practices
+
+## 📚 What's in the CLAUDE.md File
+
+The `CLAUDE.md` file in this folder contains comprehensive guidance for:
+
+### Development Commands
+- Package management (npm, yarn, pnpm)
+- Build commands (dev, build, preview)
+- Testing commands (unit, integration, e2e)
+- Code quality commands (lint, format, typecheck)
+
+### Technology Stack Guidelines
+- JavaScript/TypeScript best practices
+- Framework-specific patterns (React, Vue, Angular, Node.js)
+- Build tools configuration (Vite, Webpack, esbuild)
+- Testing frameworks (Jest, Vitest, Cypress, Playwright)
+
+### Project Structure Recommendations
+- File organization patterns
+- Naming conventions
+- TypeScript configuration
+- Code quality standards
+
+### Performance & Security
+- Bundle optimization strategies
+- Runtime performance tips
+- Security best practices
+- Dependency management
+
+## 🚀 Getting Started
+
+1. **Navigate to your JavaScript/TypeScript project:**
+   ```bash
+   cd your-project
+   ```
+
+2. **Run the installer:**
+   ```bash
+   npx claude-code-templates --language javascript-typescript
+   ```
+
+3. **Start Claude Code:**
+   ```bash
+   claude
+   ```
+
+4. **Try the commands:**
+   ```bash
+   /test          # Run your tests
+   /lint          # Check code quality
+   /component     # Create components (React/Vue)
+   /route         # Create API routes (Node.js)
+   ```
+
+## 🔧 Customization
+
+After installation, you can customize the setup:
+
+### Modify Commands
+Edit files in `.claude/commands/` to match your workflow:
 ```bash
-# Edit test command
+# Edit the test command
 vim .claude/commands/test.md
 
-# Add new custom command
-echo "# My Custom Command" > .claude/commands/my-command.md
+# Add a custom command
+echo "# Deploy Command" > .claude/commands/deploy.md
 ```
 
-### Adjusting Settings
-Modify `.claude/settings.json` to match your project preferences:
-
+### Adjust Settings
+Update `.claude/settings.json` for your project:
 ```json
 {
-  "language": "typescript",
   "framework": "react",
-  "testFramework": "jest",
-  "packageManager": "npm"
+  "testFramework": "jest", 
+  "packageManager": "npm",
+  "buildTool": "vite"
 }
 ```
 
-### Adding Hooks
-Create custom hooks in `.claude/hooks/` for automated tasks:
+### Add Framework Features
+The template adapts to your specific framework needs automatically.
 
-```json
-{
-  "trigger": "on_file_save",
-  "pattern": "*.ts,*.tsx",
-  "command": "npm run typecheck"
-}
+## 📖 Learn More
+
+- **Main Project**: [Claude Code Templates](../README.md)
+- **Common Templates**: [Universal patterns](../common/README.md)
+- **Python Templates**: [Python development](../python/README.md)
+- **CLI Tool**: [Automated installer](../cli-tool/README.md)
+
+## 💡 Why Use This Template?
+
+### Before (Manual Setup)
+```bash
+# Create CLAUDE.md from scratch
+# Research JS/TS best practices
+# Configure commands manually
+# Set up linting and testing
+# Configure TypeScript
+# ... hours of setup
 ```
 
-## Best Practices
+### After (With This Template)
+```bash
+npx claude-code-templates --language javascript-typescript
+# ✅ Everything configured in 30 seconds!
+```
 
-### Project Structure
-- Use clear, descriptive folder names
-- Separate concerns (components, utils, services)
-- Follow framework conventions
-- Keep configuration files in project root
+### Benefits
+- **Instant Setup** - Get started immediately with proven configurations
+- **Framework-Aware** - Automatically adapts to React, Vue, Node.js, etc.
+- **Best Practices** - Uses industry-standard patterns and tools
+- **TypeScript Ready** - Full TypeScript support out of the box
+- **Testing Included** - Pre-configured for Jest, Vitest, and more
 
-### Code Quality
-- Enable TypeScript strict mode
-- Use ESLint with recommended rules
-- Format code consistently with Prettier
-- Write comprehensive tests
+## 🤝 Contributing
 
-### Performance
-- Implement code splitting for large applications
-- Use lazy loading for routes and components
-- Optimize bundle size regularly
-- Monitor runtime performance
+Help improve this JavaScript/TypeScript template:
 
-## Troubleshooting
+1. Test the template with different JS/TS projects
+2. Report issues or suggest improvements
+3. Add support for new frameworks or tools
+4. Share your customizations and best practices
 
-### Common Issues
-- **TypeScript errors**: Run `npm run typecheck` to identify issues
-- **Linting failures**: Use `npm run lint:fix` to auto-fix issues
-- **Test failures**: Run tests in watch mode with `npm run test:watch`
-- **Build errors**: Check dependencies and configuration files
+Your contributions make this template better for the entire JavaScript/TypeScript community!
 
-### Getting Help
-- Check the main repository documentation
-- Review framework-specific guides
-- Use Claude Code's built-in help: `/help`
-- Consult community resources and documentation
+---
 
-## Contributing
-
-Found ways to improve these templates? We welcome contributions:
-
-1. Fork the repository
-2. Create a feature branch
-3. Add your improvements
-4. Test with real projects
-5. Submit a pull request
-
-## License
-
-This template is part of the Claude Code Templates project and is licensed under the MIT License.
+**Ready to supercharge your JavaScript/TypeScript development?** Run `npx claude-code-templates --language javascript-typescript` in your project now!

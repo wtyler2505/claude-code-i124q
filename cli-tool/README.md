@@ -11,7 +11,7 @@ The fastest way to get started is with `npx` (no installation required):
 cd your-project
 
 # Run the installer
-npx create-claude-config
+npx claude-code-templates
 ```
 
 ## 📋 How to Use
@@ -23,7 +23,7 @@ cd your-project-directory
 
 ### Step 2: Run the Installer
 ```bash
-npx create-claude-config
+npx claude-code-templates
 ```
 
 ### Step 3: Follow the Interactive Setup
@@ -43,7 +43,7 @@ claude
 ### Interactive Setup (Recommended)
 ```bash
 cd my-react-app
-npx create-claude-config
+npx claude-code-templates
 # Follow the prompts - it will detect React automatically!
 ```
 
@@ -51,42 +51,43 @@ npx create-claude-config
 ```bash
 # React project
 cd my-react-app
-npx create-claude-config --language javascript-typescript --framework react
+npx claude-code-templates --language javascript-typescript --framework react
 
 # Python Django project  
 cd my-django-app
-npx create-claude-config --language python --framework django
+npx claude-code-templates --language python --framework django
 
 # Node.js API
 cd my-api
-npx create-claude-config --language javascript-typescript --framework node
+npx claude-code-templates --language javascript-typescript --framework node
 
 # Generic Python project
 cd my-python-project
-npx create-claude-config --language python
+npx claude-code-templates --language python
 ```
 
 ### Advanced Options
 ```bash
 # Skip all prompts and use defaults
-npx create-claude-config --yes
+npx claude-code-templates --yes
 
 # See what would be installed without actually installing
-npx create-claude-config --dry-run
+npx claude-code-templates --dry-run
 
 # Install to a different directory
-npx create-claude-config --directory /path/to/project
+npx claude-code-templates --directory /path/to/project
 
 # Get help
-npx create-claude-config --help
+npx claude-code-templates --help
 ```
 
 ## 🔄 Alternative Commands
 
 All these commands work exactly the same way:
 ```bash
-npx create-claude-config     # ✅ Recommended (follows npm convention)
-npx claude-code-templates    # Package name
+npx claude-code-templates    # ✅ Recommended (package name)
+npx claude-code-template     # Singular alias
+npx create-claude-config     # Create-style command
 npx claude-init              # Short alias
 ```
 
@@ -153,7 +154,7 @@ Each language template includes optimized commands for:
 
 ### Interactive Experience
 ```bash
-$ npx create-claude-config
+$ npx claude-code-templates
 
  ██████╗██╗      █████╗ ██╗   ██╗██████╗ ███████╗
 ██╔════╝██║     ██╔══██╗██║   ██║██╔══██╗██╔════╝

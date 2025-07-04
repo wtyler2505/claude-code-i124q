@@ -1,5 +1,168 @@
 const chalk = require('chalk');
+const inquirer = require('inquirer');
 const { getAvailableLanguages, getFrameworksForLanguage } = require('./templates');
+const { getCommandsForLanguageAndFramework } = require('./command-scanner');
+
+async function interactivePrompts(projectInfo, options = {}) {
+  const state = {
+    currentStep: 0,
+    answers: {},
+    steps: []
+  };
+
+  // Build steps array based on options
+  if (!options.language) state.steps.push('language');
+  if (!options.framework) state.steps.push('framework');
+  state.steps.push('commands', 'confirm');
+
+  while (state.currentStep < state.steps.length) {
+    const stepName = state.steps[state.currentStep];
+    const result = await showStep(stepName, state.answers, projectInfo, options);
+    
+    if (result.action === 'back') {
+      if (state.currentStep > 0) {
+        state.currentStep--;
+        // Clear the answer for the step we're going back from
+        delete state.answers[stepName];
+      }
+    } else if (result.action === 'next') {
+      state.answers[stepName] = result.value;
+      state.currentStep++;
+    } else if (result.action === 'exit') {
+      return { confirm: false };
+    }
+  }
+
+  return state.answers;
+}
+
+async function showStep(stepName, currentAnswers, projectInfo, options) {
+  const stepConfig = getStepConfig(stepName, currentAnswers, projectInfo, options);
+  
+  if (!stepConfig) {
+    return { action: 'next', value: null };
+  }
+
+  // Add back option if not first step
+  const isFirstStep = stepName === 'language' || (options.language && stepName === 'framework') || 
+                      (options.language && options.framework && stepName === 'commands');
+  
+  if (!isFirstStep && stepConfig.type === 'list') {
+    stepConfig.choices = [
+      { value: '__back__', name: chalk.gray('← Back') },
+      new inquirer.Separator(),
+      ...stepConfig.choices
+    ];
+  }
+
+  const answer = await inquirer.prompt([stepConfig]);
+  const value = answer[stepName];
+
+  if (value === '__back__') {
+    return { action: 'back' };
+  }
+
+  return { action: 'next', value };
+}
+
+function getStepConfig(stepName, currentAnswers, projectInfo, options) {
+  switch (stepName) {
+    case 'language':
+      return {
+        type: 'list',
+        name: 'language',
+        message: 'Select your programming language:',
+        choices: getAvailableLanguages(),
+        default: projectInfo.detectedLanguage || 'common',
+        prefix: chalk.blue('🔤')
+      };
+
+    case 'framework':
+      const selectedLanguage = currentAnswers.language || options.language;
+      const frameworks = getFrameworksForLanguage(selectedLanguage);
+      
+      if (frameworks.length === 0) {
+        return null; // Skip this step
+      }
+      
+      return {
+        type: 'list',
+        name: 'framework',
+        message: 'Select your framework (optional):',
+        choices: [
+          { value: 'none', name: 'None / Generic' },
+          ...frameworks
+        ],
+        default: projectInfo.detectedFramework || 'none',
+        prefix: chalk.green('🎯')
+      };
+
+    case 'commands':
+      const commandLanguage = currentAnswers.language || options.language;
+      const commandFramework = currentAnswers.framework || options.framework;
+      
+      if (!commandLanguage || commandLanguage === 'common') {
+        return {
+          type: 'checkbox',
+          name: 'commands',
+          message: 'Select commands to include (use space to select):',
+          choices: [
+            {
+              value: 'basic-commands',
+              name: 'Basic development commands',
+              checked: true
+            }
+          ],
+          prefix: chalk.cyan('📋')
+        };
+      }
+      
+      const availableCommands = getCommandsForLanguageAndFramework(commandLanguage, commandFramework);
+      
+      return {
+        type: 'checkbox',
+        name: 'commands',
+        message: 'Select commands to include (use space to select, enter to continue):',
+        choices: availableCommands.map(cmd => ({
+          value: cmd.name,
+          name: `${cmd.displayName} - ${cmd.description}`,
+          checked: cmd.checked
+        })),
+        prefix: chalk.cyan('📋')
+      };
+
+    case 'confirm':
+      const confirmLanguage = currentAnswers.language || options.language || 'common';
+      const confirmFramework = currentAnswers.framework || options.framework || 'none';
+      const commandCount = currentAnswers.commands ? currentAnswers.commands.length : 0;
+      
+      let message = `Setup Claude Code for ${chalk.cyan(confirmLanguage)}`;
+      if (confirmFramework !== 'none') {
+        message += ` with ${chalk.green(confirmFramework)}`;
+      }
+      if (commandCount > 0) {
+        message += ` (${chalk.yellow(commandCount)} commands)`;
+      }
+      message += '?';
+      
+      return {
+        type: 'list',
+        name: 'confirm',
+        message,
+        choices: [
+          { value: '__back__', name: chalk.gray('← Back to modify settings') },
+          new inquirer.Separator(),
+          { value: true, name: chalk.green('✅ Yes, proceed with setup') },
+          { value: false, name: chalk.red('❌ No, cancel setup') }
+        ],
+        default: true,
+        prefix: chalk.red('🚀')
+      };
+
+    default:
+      return null;
+  }
+}
 
 function createPrompts(projectInfo, options = {}) {
   const prompts = [];
@@ -41,35 +204,40 @@ function createPrompts(projectInfo, options = {}) {
     });
   }
   
-  // Features selection
+  // Command selection
   prompts.push({
     type: 'checkbox',
-    name: 'features',
-    message: 'Select additional features:',
-    choices: [
-      {
-        value: 'git-hooks',
-        name: 'Git hooks integration',
-        checked: false
-      },
-      {
-        value: 'testing',
-        name: 'Enhanced testing commands',
-        checked: true
-      },
-      {
-        value: 'linting',
-        name: 'Code linting and formatting',
-        checked: true
-      },
-      {
-        value: 'debugging',
-        name: 'Debugging helpers',
-        checked: false
+    name: 'commands',
+    message: 'Select commands to include (use space to select):',
+    choices: (answers) => {
+      const selectedLanguage = answers.language || options.language;
+      const selectedFramework = answers.framework || options.framework;
+      
+      if (!selectedLanguage || selectedLanguage === 'common') {
+        return [
+          {
+            value: 'basic-commands',
+            name: 'Basic development commands',
+            checked: true
+          }
+        ];
       }
-    ],
-    prefix: chalk.yellow('⚙️')
+      
+      const availableCommands = getCommandsForLanguageAndFramework(selectedLanguage, selectedFramework);
+      
+      return availableCommands.map(cmd => ({
+        value: cmd.name,
+        name: `${cmd.displayName} - ${cmd.description}`,
+        checked: cmd.checked
+      }));
+    },
+    prefix: chalk.cyan('📋'),
+    when: (answers) => {
+      const selectedLanguage = answers.language || options.language;
+      return selectedLanguage && selectedLanguage !== 'common';
+    }
   });
+
   
   // Confirmation
   prompts.push({
@@ -78,7 +246,18 @@ function createPrompts(projectInfo, options = {}) {
     message: (answers) => {
       const language = answers.language || options.language || 'common';
       const framework = answers.framework || options.framework || 'none';
-      return `Setup Claude Code for ${chalk.cyan(language)}${framework !== 'none' ? ` with ${chalk.green(framework)}` : ''}?`;
+      const commandCount = answers.commands ? answers.commands.length : 0;
+      
+      let message = `Setup Claude Code for ${chalk.cyan(language)}`;
+      if (framework !== 'none') {
+        message += ` with ${chalk.green(framework)}`;
+      }
+      if (commandCount > 0) {
+        message += ` (${chalk.yellow(commandCount)} commands)`;
+      }
+      message += '?';
+      
+      return message;
     },
     default: true,
     prefix: chalk.red('🚀')
@@ -106,5 +285,6 @@ function createProjectTypePrompt(detectedTypes) {
 
 module.exports = {
   createPrompts,
-  createProjectTypePrompt
+  createProjectTypePrompt,
+  interactivePrompts
 };

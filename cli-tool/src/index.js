@@ -5,7 +5,7 @@ const path = require('path');
 const ora = require('ora');
 const { detectProject } = require('./utils');
 const { getTemplateConfig } = require('./templates');
-const { createPrompts } = require('./prompts');
+const { createPrompts, interactivePrompts } = require('./prompts');
 const { copyTemplateFiles } = require('./file-operations');
 
 async function createClaudeConfig(options = {}) {
@@ -19,9 +19,6 @@ async function createClaudeConfig(options = {}) {
   const projectInfo = await detectProject(targetDir);
   spinner.succeed('Project detection complete');
   
-  // Create interactive prompts
-  const prompts = createPrompts(projectInfo, options);
-  
   let config;
   if (options.yes) {
     // Use defaults
@@ -31,8 +28,8 @@ async function createClaudeConfig(options = {}) {
       features: []
     };
   } else {
-    // Interactive prompts
-    config = await inquirer.prompt(prompts);
+    // Interactive prompts with back navigation
+    config = await interactivePrompts(projectInfo, options);
   }
   
   // Check if user confirmed the setup

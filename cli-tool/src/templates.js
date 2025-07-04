@@ -1,4 +1,5 @@
 const path = require('path');
+const { getCommandsForLanguageAndFramework } = require('./command-scanner');
 
 const TEMPLATES_CONFIG = {
   'common': {
@@ -14,7 +15,8 @@ const TEMPLATES_CONFIG = {
     description: 'Optimized for modern JS/TS development',
     files: [
       { source: 'javascript-typescript/CLAUDE.md', destination: 'CLAUDE.md' },
-      { source: 'javascript-typescript/.claude', destination: '.claude' }
+      { source: 'javascript-typescript/.claude', destination: '.claude' },
+      { source: 'javascript-typescript/.mcp.json', destination: '.mcp.json' }
     ],
     frameworks: {
       'react': {
@@ -25,11 +27,15 @@ const TEMPLATES_CONFIG = {
       },
       'vue': {
         name: 'Vue.js',
-        additionalFiles: []
+        additionalFiles: [
+          { source: 'javascript-typescript/examples/vue-app/.claude/commands', destination: '.claude/commands' }
+        ]
       },
       'angular': {
         name: 'Angular',
-        additionalFiles: []
+        additionalFiles: [
+          { source: 'javascript-typescript/examples/angular-app/.claude/commands', destination: '.claude/commands' }
+        ]
       },
       'node': {
         name: 'Node.js',
@@ -41,25 +47,12 @@ const TEMPLATES_CONFIG = {
   },
   'python': {
     name: 'Python',
-    description: 'Optimized for Python development',
+    description: 'Configuration for Python projects (Coming Soon)',
     files: [
-      { source: 'python/CLAUDE.md', destination: 'CLAUDE.md' },
-      { source: 'python/.claude', destination: '.claude' }
+      { source: 'common/CLAUDE.md', destination: 'CLAUDE.md' },
+      { source: 'common/.claude', destination: '.claude' }
     ],
-    frameworks: {
-      'django': {
-        name: 'Django',
-        additionalFiles: []
-      },
-      'flask': {
-        name: 'Flask',
-        additionalFiles: []
-      },
-      'fastapi': {
-        name: 'FastAPI',
-        additionalFiles: []
-      }
-    }
+    comingSoon: true
   },
   'rust': {
     name: 'Rust',
@@ -101,7 +94,7 @@ function getFrameworksForLanguage(language) {
 }
 
 function getTemplateConfig(selections) {
-  const { language, framework } = selections;
+  const { language, framework, commands = [] } = selections;
   const baseConfig = TEMPLATES_CONFIG[language];
   
   if (!baseConfig) {
@@ -118,10 +111,18 @@ function getTemplateConfig(selections) {
     }
   }
   
+  // Handle command selection
+  let selectedCommands = [];
+  if (commands && commands.length > 0) {
+    const availableCommands = getCommandsForLanguageAndFramework(language, framework);
+    selectedCommands = availableCommands.filter(cmd => commands.includes(cmd.name));
+  }
+  
   return {
     language,
     framework,
     files,
+    selectedCommands,
     config: baseConfig
   };
 }
