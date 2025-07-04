@@ -2,7 +2,7 @@
 
 **Ready-to-use configurations for Claude Code across multiple programming languages and frameworks**
 
-[![npm version](https://badge.fury.io/js/claude-config-init.svg)](https://badge.fury.io/js/claude-config-init)
+[![npm version](https://badge.fury.io/js/claude-code-templates.svg)](https://badge.fury.io/js/claude-code-templates)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Get started with Claude Code in seconds using our optimized templates and automated installer. No manual configuration needed!

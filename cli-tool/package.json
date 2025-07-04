@@ -1,11 +1,11 @@
 {
-  "name": "claude-config-init",
-  "version": "1.0.4",
+  "name": "claude-code-templates",
+  "version": "1.0.0",
   "description": "CLI tool to setup Claude Code configurations for different programming languages",
   "main": "src/index.js",
   "bin": {
     "create-claude-config": "bin/create-claude-config.js",
-    "claude-config-init": "bin/create-claude-config.js",
+    "claude-code-templates": "bin/create-claude-config.js",
     "claude-init": "bin/create-claude-config.js"
   },
   "scripts": {

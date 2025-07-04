@@ -86,7 +86,7 @@ npx create-claude-config --help
 All these commands work exactly the same way:
 ```bash
 npx create-claude-config     # ✅ Recommended (follows npm convention)
-npx claude-config-init       # Package name
+npx claude-code-templates    # Package name
 npx claude-init              # Short alias
 ```
 
@@ -100,7 +100,7 @@ npx claude-init              # Short alias
 
 If you prefer global installation:
 ```bash
-npm install -g claude-config-init
+npm install -g claude-code-templates
 create-claude-config
 ```
 
