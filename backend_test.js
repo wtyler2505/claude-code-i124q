@@ -29,7 +29,7 @@ class MCPDiscoveryTester {
       cli: { passed: 0, failed: 0, tests: [] },
       demo: { passed: 0, failed: 0, tests: [] }
     };
-    this.testProjectPath = path.join(__dirname, 'cli-tool');
+    this.testProjectPath = __dirname;
   }
 
   /**
