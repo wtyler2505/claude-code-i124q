@@ -8,16 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Load DataService from the actual file
-const DataServicePath = path.join(__dirname, '../../src/analytics-web/services/DataService.js');
-const DataServiceCode = fs.readFileSync(DataServicePath, 'utf8');
-
-// Create a module-like environment
-const moduleExports = {};
-const module = { exports: moduleExports };
-
-// Execute the DataService code in our test environment
-eval(DataServiceCode);
-const DataService = moduleExports.DataService || global.DataService;
+const DataService = require('../../src/analytics-web/services/DataService');
 
 describe('DataService', () => {
   let dataService;
