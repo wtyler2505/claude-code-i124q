@@ -619,4 +619,4 @@ async function createClaudeConfig(options = {}) {
   }
 }
 
-module.exports = { createClaudeConfig, showMainMenu };
+module.exports = { createClaudeConfig, showMainMenu, runAIAgents };
