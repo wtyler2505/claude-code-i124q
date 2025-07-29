@@ -4,10 +4,14 @@
  */
 
 const DataCache = require('../../src/analytics/data/DataCache');
-const fs = require('fs-extra');
 
-// Mock fs-extra
-jest.mock('fs-extra');
+// Mock fs-extra with proper Jest mock functions
+jest.mock('fs-extra', () => ({
+  stat: jest.fn(),
+  readFile: jest.fn(),
+}));
+
+const fs = require('fs-extra');
 
 describe('DataCache', () => {
   let dataCache;
