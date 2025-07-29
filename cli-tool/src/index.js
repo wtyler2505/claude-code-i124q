@@ -99,6 +99,22 @@ async function showMainMenu() {
   return await createClaudeConfig({ setupFromMenu: true });
 }
 
+async function runMCPDiscovery(options = {}) {
+  const targetDir = options.directory || process.cwd();
+  
+  console.log(chalk.blue('🔌 Welcome to the MCP Discovery System!'));
+  console.log(chalk.gray('Intelligent detection, analysis, and management of MCP servers\n'));
+  
+  try {
+    // Initialize MCP Server Manager
+    const mcpManager = new MCPServerManager(targetDir);
+    await mcpManager.run(options);
+  } catch (error) {
+    console.error(chalk.red('❌ MCP Discovery failed:'), error.message);
+    console.log(chalk.yellow('💡 Try running: claude health-check'));
+  }
+}
+
 async function runAIAgents(options = {}) {
   const targetDir = options.directory || process.cwd();
   
