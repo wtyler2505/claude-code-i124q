@@ -696,6 +696,16 @@ class DataCache {
   configure(config) {
     this.config = { ...this.config, ...config };
   }
+
+  /**
+   * Clean up resources and clear intervals
+   */
+  destroy() {
+    if (this.cleanupInterval) {
+      clearInterval(this.cleanupInterval);
+      this.cleanupInterval = null;
+    }
+  }
 }
 
 module.exports = DataCache;
