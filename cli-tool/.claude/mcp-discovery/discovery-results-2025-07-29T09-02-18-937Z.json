@@ -1,0 +1,5183 @@
+{
+  "servers": [
+    {
+      "id": "project-script-mcp-discovery-demo.js",
+      "name": "mcp-discovery-demo",
+      "description": "MCP server script: mcp-discovery-demo.js",
+      "command": "node mcp-discovery-demo.js",
+      "location": "project",
+      "source": "script-file",
+      "type": "script",
+      "scriptPath": "/app/cli-tool/mcp-discovery-demo.js"
+    },
+    {
+      "id": "npm-@playwright/mcp",
+      "name": "@playwright/mcp",
+      "version": "0.0.32",
+      "description": "Playwright Tools for MCP",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @playwright/mcp",
+      "installCommand": "npm install -g @playwright/mcp"
+    },
+    {
+      "id": "npm-n8n-nodes-mcp",
+      "name": "n8n-nodes-mcp",
+      "version": "0.1.29",
+      "description": "MCP nodes for n8n ",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx n8n-nodes-mcp",
+      "installCommand": "npm install -g n8n-nodes-mcp"
+    },
+    {
+      "id": "npm-@upstash/context7-mcp",
+      "name": "@upstash/context7-mcp",
+      "version": "1.0.14",
+      "description": "MCP server for Context7",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @upstash/context7-mcp",
+      "installCommand": "npm install -g @upstash/context7-mcp"
+    },
+    {
+      "id": "npm-@supabase/mcp-utils",
+      "name": "@supabase/mcp-utils",
+      "version": "0.2.1",
+      "description": "MCP utilities",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @supabase/mcp-utils",
+      "installCommand": "npm install -g @supabase/mcp-utils"
+    },
+    {
+      "id": "npm-@browsermcp/mcp",
+      "name": "@browsermcp/mcp",
+      "version": "0.1.3",
+      "description": "MCP server for browser automation using Browser MCP",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @browsermcp/mcp",
+      "installCommand": "npm install -g @browsermcp/mcp"
+    },
+    {
+      "id": "npm-mcp-framework",
+      "name": "mcp-framework",
+      "version": "0.2.15",
+      "description": "Framework for building Model Context Protocol (MCP) servers in Typescript",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx mcp-framework",
+      "installCommand": "npm install -g mcp-framework"
+    },
+    {
+      "id": "npm-@langchain/mcp-adapters",
+      "name": "@langchain/mcp-adapters",
+      "version": "0.6.0",
+      "description": "LangChain.js adapters for Model Context Protocol (MCP)",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @langchain/mcp-adapters",
+      "installCommand": "npm install -g @langchain/mcp-adapters"
+    },
+    {
+      "id": "npm-@composio/mcp",
+      "name": "@composio/mcp",
+      "version": "1.0.7",
+      "description": "MCP CLI tool",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @composio/mcp",
+      "installCommand": "npm install -g @composio/mcp"
+    },
+    {
+      "id": "npm-@mastra/mcp",
+      "name": "@mastra/mcp",
+      "version": "0.10.7",
+      "description": "Model Context Protocol (MCP) client implementation for Mastra, providing seamless integration with MCP-compatible AI models and tools.",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @mastra/mcp",
+      "installCommand": "npm install -g @mastra/mcp"
+    },
+    {
+      "id": "npm-@currents/mcp",
+      "name": "@currents/mcp",
+      "version": "1.0.3",
+      "description": "Currents MCP server",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @currents/mcp",
+      "installCommand": "npm install -g @currents/mcp"
+    },
+    {
+      "id": "npm-mcp-hello-world",
+      "name": "mcp-hello-world",
+      "version": "1.1.2",
+      "description": "A simple Hello World MCP server",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx mcp-hello-world",
+      "installCommand": "npm install -g mcp-hello-world"
+    },
+    {
+      "id": "npm-mcp-proxy",
+      "name": "mcp-proxy",
+      "version": "5.4.0",
+      "description": "A TypeScript SSE proxy for MCP servers that use stdio transport.",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx mcp-proxy",
+      "installCommand": "npm install -g mcp-proxy"
+    },
+    {
+      "id": "npm-@vercel/mcp-adapter",
+      "name": "@vercel/mcp-adapter",
+      "version": "1.0.0",
+      "description": "Vercel MCP Adapter for Next.js and other frameworks",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @vercel/mcp-adapter",
+      "installCommand": "npm install -g @vercel/mcp-adapter"
+    },
+    {
+      "id": "npm-@rekog/mcp-nest",
+      "name": "@rekog/mcp-nest",
+      "version": "1.7.0",
+      "description": "NestJS module for creating Model Context Protocol (MCP) servers",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @rekog/mcp-nest",
+      "installCommand": "npm install -g @rekog/mcp-nest"
+    },
+    {
+      "id": "npm-@translated/lara-mcp",
+      "name": "@translated/lara-mcp",
+      "version": "0.0.12",
+      "description": "Lara API official MCP server",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @translated/lara-mcp",
+      "installCommand": "npm install -g @translated/lara-mcp"
+    },
+    {
+      "id": "npm-@notionhq/notion-mcp-server",
+      "name": "@notionhq/notion-mcp-server",
+      "version": "1.8.1",
+      "description": "Official MCP server for Notion API",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @notionhq/notion-mcp-server",
+      "installCommand": "npm install -g @notionhq/notion-mcp-server"
+    },
+    {
+      "id": "npm-mcp-server-code-runner",
+      "name": "mcp-server-code-runner",
+      "version": "0.1.7",
+      "description": "Code Runner MCP Server",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx mcp-server-code-runner",
+      "installCommand": "npm install -g mcp-server-code-runner"
+    },
+    {
+      "id": "npm-n8n-mcp",
+      "name": "n8n-mcp",
+      "version": "2.7.21",
+      "description": "Integration between n8n workflow automation and Model Context Protocol (MCP)",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx n8n-mcp",
+      "installCommand": "npm install -g n8n-mcp"
+    },
+    {
+      "id": "npm-tavily-mcp",
+      "name": "tavily-mcp",
+      "version": "0.2.9",
+      "description": "MCP server for advanced web search using Tavily",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx tavily-mcp",
+      "installCommand": "npm install -g tavily-mcp"
+    },
+    {
+      "id": "npm-@mobilenext/mobile-mcp",
+      "name": "@mobilenext/mobile-mcp",
+      "version": "0.0.22",
+      "description": "Mobile MCP",
+      "location": "npm-registry",
+      "source": "npm-search",
+      "type": "available",
+      "command": "npx @mobilenext/mobile-mcp",
+      "installCommand": "npm install -g @mobilenext/mobile-mcp"
+    },
+    {
+      "id": "filesystem",
+      "name": "Filesystem MCP",
+      "description": "Access and manipulate files and directories",
+      "location": "registry",
+      "source": "curated",
+      "type": "available",
+      "command": "npx @modelcontextprotocol/server-filesystem",
+      "installCommand": "npm install -g @modelcontextprotocol/server-filesystem",
+      "category": "filesystem",
+      "popularity": "high"
+    },
+    {
+      "id": "memory-bank",
+      "name": "Memory Bank MCP",
+      "description": "Persistent memory and knowledge storage",
+      "location": "registry",
+      "source": "curated",
+      "type": "available",
+      "command": "npx @modelcontextprotocol/server-memory",
+      "installCommand": "npm install -g @modelcontextprotocol/server-memory",
+      "category": "memory",
+      "popularity": "high"
+    },
+    {
+      "id": "web-search",
+      "name": "Web Search MCP",
+      "description": "Search the web and retrieve information",
+      "location": "registry",
+      "source": "curated",
+      "type": "available",
+      "command": "npx @modelcontextprotocol/server-web-search",
+      "installCommand": "npm install -g @modelcontextprotocol/server-web-search",
+      "category": "web",
+      "popularity": "high"
+    },
+    {
+      "id": "database",
+      "name": "Database MCP",
+      "description": "Connect to and query databases",
+      "location": "registry",
+      "source": "curated",
+      "type": "available",
+      "command": "npx @modelcontextprotocol/server-database",
+      "installCommand": "npm install -g @modelcontextprotocol/server-database",
+      "category": "database",
+      "popularity": "medium"
+    }
+  ],
+  "analyses": [
+    {
+      "id": "project-script-mcp-discovery-demo.js",
+      "name": "mcp-discovery-demo",
+      "originalInfo": {
+        "id": "project-script-mcp-discovery-demo.js",
+        "name": "mcp-discovery-demo",
+        "description": "MCP server script: mcp-discovery-demo.js",
+        "command": "node mcp-discovery-demo.js",
+        "location": "project",
+        "source": "script-file",
+        "type": "script",
+        "scriptPath": "/app/cli-tool/mcp-discovery-demo.js"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": true,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "unknown",
+      "maintainer": "unknown",
+      "healthStatus": "good",
+      "healthScore": 85,
+      "issues": [
+        "Server is not configured"
+      ],
+      "recommendations": [
+        "Configure server in .mcp.json file"
+      ]
+    },
+    {
+      "id": "npm-@playwright/mcp",
+      "name": "@playwright/mcp",
+      "originalInfo": {
+        "id": "npm-@playwright/mcp",
+        "name": "@playwright/mcp",
+        "version": "0.0.32",
+        "description": "Playwright Tools for MCP",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @playwright/mcp",
+        "installCommand": "npm install -g @playwright/mcp"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "0.0.32",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @playwright/mcp"
+      ]
+    },
+    {
+      "id": "npm-n8n-nodes-mcp",
+      "name": "n8n-nodes-mcp",
+      "originalInfo": {
+        "id": "npm-n8n-nodes-mcp",
+        "name": "n8n-nodes-mcp",
+        "version": "0.1.29",
+        "description": "MCP nodes for n8n ",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx n8n-nodes-mcp",
+        "installCommand": "npm install -g n8n-nodes-mcp"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "0.1.29",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g n8n-nodes-mcp"
+      ]
+    },
+    {
+      "id": "npm-@upstash/context7-mcp",
+      "name": "@upstash/context7-mcp",
+      "originalInfo": {
+        "id": "npm-@upstash/context7-mcp",
+        "name": "@upstash/context7-mcp",
+        "version": "1.0.14",
+        "description": "MCP server for Context7",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @upstash/context7-mcp",
+        "installCommand": "npm install -g @upstash/context7-mcp"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs",
+          "bash"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "1.0.14",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @upstash/context7-mcp"
+      ]
+    },
+    {
+      "id": "npm-@supabase/mcp-utils",
+      "name": "@supabase/mcp-utils",
+      "originalInfo": {
+        "id": "npm-@supabase/mcp-utils",
+        "name": "@supabase/mcp-utils",
+        "version": "0.2.1",
+        "description": "MCP utilities",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @supabase/mcp-utils",
+        "installCommand": "npm install -g @supabase/mcp-utils"
+      },
+      "category": "utilities",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "0.2.1",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @supabase/mcp-utils"
+      ]
+    },
+    {
+      "id": "npm-@browsermcp/mcp",
+      "name": "@browsermcp/mcp",
+      "originalInfo": {
+        "id": "npm-@browsermcp/mcp",
+        "name": "@browsermcp/mcp",
+        "version": "0.1.3",
+        "description": "MCP server for browser automation using Browser MCP",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @browsermcp/mcp",
+        "installCommand": "npm install -g @browsermcp/mcp"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "0.1.3",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @browsermcp/mcp"
+      ]
+    },
+    {
+      "id": "npm-mcp-framework",
+      "name": "mcp-framework",
+      "originalInfo": {
+        "id": "npm-mcp-framework",
+        "name": "mcp-framework",
+        "version": "0.2.15",
+        "description": "Framework for building Model Context Protocol (MCP) servers in Typescript",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx mcp-framework",
+        "installCommand": "npm install -g mcp-framework"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "0.2.15",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g mcp-framework"
+      ]
+    },
+    {
+      "id": "npm-@langchain/mcp-adapters",
+      "name": "@langchain/mcp-adapters",
+      "originalInfo": {
+        "id": "npm-@langchain/mcp-adapters",
+        "name": "@langchain/mcp-adapters",
+        "version": "0.6.0",
+        "description": "LangChain.js adapters for Model Context Protocol (MCP)",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @langchain/mcp-adapters",
+        "installCommand": "npm install -g @langchain/mcp-adapters"
+      },
+      "category": "ai-ml",
+      "complexity": 1,
+      "priority": "low",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "0.6.0",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @langchain/mcp-adapters"
+      ]
+    },
+    {
+      "id": "npm-@composio/mcp",
+      "name": "@composio/mcp",
+      "originalInfo": {
+        "id": "npm-@composio/mcp",
+        "name": "@composio/mcp",
+        "version": "1.0.7",
+        "description": "MCP CLI tool",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @composio/mcp",
+        "installCommand": "npm install -g @composio/mcp"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "1.0.7",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @composio/mcp"
+      ]
+    },
+    {
+      "id": "npm-@mastra/mcp",
+      "name": "@mastra/mcp",
+      "originalInfo": {
+        "id": "npm-@mastra/mcp",
+        "name": "@mastra/mcp",
+        "version": "0.10.7",
+        "description": "Model Context Protocol (MCP) client implementation for Mastra, providing seamless integration with MCP-compatible AI models and tools.",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @mastra/mcp",
+        "installCommand": "npm install -g @mastra/mcp"
+      },
+      "category": "ai-ml",
+      "complexity": 1,
+      "priority": "low",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "0.10.7",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @mastra/mcp"
+      ]
+    },
+    {
+      "id": "npm-@currents/mcp",
+      "name": "@currents/mcp",
+      "originalInfo": {
+        "id": "npm-@currents/mcp",
+        "name": "@currents/mcp",
+        "version": "1.0.3",
+        "description": "Currents MCP server",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @currents/mcp",
+        "installCommand": "npm install -g @currents/mcp"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "1.0.3",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @currents/mcp"
+      ]
+    },
+    {
+      "id": "npm-mcp-hello-world",
+      "name": "mcp-hello-world",
+      "originalInfo": {
+        "id": "npm-mcp-hello-world",
+        "name": "mcp-hello-world",
+        "version": "1.1.2",
+        "description": "A simple Hello World MCP server",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx mcp-hello-world",
+        "installCommand": "npm install -g mcp-hello-world"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "1.1.2",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g mcp-hello-world"
+      ]
+    },
+    {
+      "id": "npm-mcp-proxy",
+      "name": "mcp-proxy",
+      "originalInfo": {
+        "id": "npm-mcp-proxy",
+        "name": "mcp-proxy",
+        "version": "5.4.0",
+        "description": "A TypeScript SSE proxy for MCP servers that use stdio transport.",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx mcp-proxy",
+        "installCommand": "npm install -g mcp-proxy"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "5.4.0",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g mcp-proxy"
+      ]
+    },
+    {
+      "id": "npm-@vercel/mcp-adapter",
+      "name": "@vercel/mcp-adapter",
+      "originalInfo": {
+        "id": "npm-@vercel/mcp-adapter",
+        "name": "@vercel/mcp-adapter",
+        "version": "1.0.0",
+        "description": "Vercel MCP Adapter for Next.js and other frameworks",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @vercel/mcp-adapter",
+        "installCommand": "npm install -g @vercel/mcp-adapter"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "1.0.0",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @vercel/mcp-adapter"
+      ]
+    },
+    {
+      "id": "npm-@rekog/mcp-nest",
+      "name": "@rekog/mcp-nest",
+      "originalInfo": {
+        "id": "npm-@rekog/mcp-nest",
+        "name": "@rekog/mcp-nest",
+        "version": "1.7.0",
+        "description": "NestJS module for creating Model Context Protocol (MCP) servers",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @rekog/mcp-nest",
+        "installCommand": "npm install -g @rekog/mcp-nest"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "1.7.0",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @rekog/mcp-nest"
+      ]
+    },
+    {
+      "id": "npm-@translated/lara-mcp",
+      "name": "@translated/lara-mcp",
+      "originalInfo": {
+        "id": "npm-@translated/lara-mcp",
+        "name": "@translated/lara-mcp",
+        "version": "0.0.12",
+        "description": "Lara API official MCP server",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @translated/lara-mcp",
+        "installCommand": "npm install -g @translated/lara-mcp"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "0.0.12",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @translated/lara-mcp"
+      ]
+    },
+    {
+      "id": "npm-@notionhq/notion-mcp-server",
+      "name": "@notionhq/notion-mcp-server",
+      "originalInfo": {
+        "id": "npm-@notionhq/notion-mcp-server",
+        "name": "@notionhq/notion-mcp-server",
+        "version": "1.8.1",
+        "description": "Official MCP server for Notion API",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @notionhq/notion-mcp-server",
+        "installCommand": "npm install -g @notionhq/notion-mcp-server"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "1.8.1",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @notionhq/notion-mcp-server"
+      ]
+    },
+    {
+      "id": "npm-mcp-server-code-runner",
+      "name": "mcp-server-code-runner",
+      "originalInfo": {
+        "id": "npm-mcp-server-code-runner",
+        "name": "mcp-server-code-runner",
+        "version": "0.1.7",
+        "description": "Code Runner MCP Server",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx mcp-server-code-runner",
+        "installCommand": "npm install -g mcp-server-code-runner"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "0.1.7",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g mcp-server-code-runner"
+      ]
+    },
+    {
+      "id": "npm-n8n-mcp",
+      "name": "n8n-mcp",
+      "originalInfo": {
+        "id": "npm-n8n-mcp",
+        "name": "n8n-mcp",
+        "version": "2.7.21",
+        "description": "Integration between n8n workflow automation and Model Context Protocol (MCP)",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx n8n-mcp",
+        "installCommand": "npm install -g n8n-mcp"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "2.7.21",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g n8n-mcp"
+      ]
+    },
+    {
+      "id": "npm-tavily-mcp",
+      "name": "tavily-mcp",
+      "originalInfo": {
+        "id": "npm-tavily-mcp",
+        "name": "tavily-mcp",
+        "version": "0.2.9",
+        "description": "MCP server for advanced web search using Tavily",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx tavily-mcp",
+        "installCommand": "npm install -g tavily-mcp"
+      },
+      "category": "web-api",
+      "complexity": 1,
+      "priority": "low",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [
+          "web_search",
+          "fetch_url",
+          "scrape_page"
+        ],
+        "resources": [
+          "http://",
+          "https://"
+        ],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "0.2.9",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g tavily-mcp"
+      ]
+    },
+    {
+      "id": "npm-@mobilenext/mobile-mcp",
+      "name": "@mobilenext/mobile-mcp",
+      "originalInfo": {
+        "id": "npm-@mobilenext/mobile-mcp",
+        "name": "@mobilenext/mobile-mcp",
+        "version": "0.0.22",
+        "description": "Mobile MCP",
+        "location": "npm-registry",
+        "source": "npm-search",
+        "type": "available",
+        "command": "npx @mobilenext/mobile-mcp",
+        "installCommand": "npm install -g @mobilenext/mobile-mcp"
+      },
+      "category": "other",
+      "complexity": 1,
+      "priority": "minimal",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [],
+        "resources": [],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "0.0.22",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @mobilenext/mobile-mcp"
+      ]
+    },
+    {
+      "id": "filesystem",
+      "name": "Filesystem MCP",
+      "originalInfo": {
+        "id": "filesystem",
+        "name": "Filesystem MCP",
+        "description": "Access and manipulate files and directories",
+        "location": "registry",
+        "source": "curated",
+        "type": "available",
+        "command": "npx @modelcontextprotocol/server-filesystem",
+        "installCommand": "npm install -g @modelcontextprotocol/server-filesystem",
+        "category": "filesystem",
+        "popularity": "high"
+      },
+      "category": "filesystem",
+      "complexity": 1,
+      "priority": "critical",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [
+          "read_file",
+          "write_file",
+          "list_directory",
+          "create_directory"
+        ],
+        "resources": [
+          "file://"
+        ],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "unknown",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @modelcontextprotocol/server-filesystem",
+        "High priority server - consider installing",
+        "Filesystem access - ensure proper permissions"
+      ]
+    },
+    {
+      "id": "memory-bank",
+      "name": "Memory Bank MCP",
+      "originalInfo": {
+        "id": "memory-bank",
+        "name": "Memory Bank MCP",
+        "description": "Persistent memory and knowledge storage",
+        "location": "registry",
+        "source": "curated",
+        "type": "available",
+        "command": "npx @modelcontextprotocol/server-memory",
+        "installCommand": "npm install -g @modelcontextprotocol/server-memory",
+        "category": "memory",
+        "popularity": "high"
+      },
+      "category": "memory-storage",
+      "complexity": 1,
+      "priority": "critical",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [
+          "store_memory",
+          "retrieve_memory",
+          "search_memory"
+        ],
+        "resources": [
+          "memory://"
+        ],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "unknown",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @modelcontextprotocol/server-memory",
+        "High priority server - consider installing"
+      ]
+    },
+    {
+      "id": "web-search",
+      "name": "Web Search MCP",
+      "originalInfo": {
+        "id": "web-search",
+        "name": "Web Search MCP",
+        "description": "Search the web and retrieve information",
+        "location": "registry",
+        "source": "curated",
+        "type": "available",
+        "command": "npx @modelcontextprotocol/server-web-search",
+        "installCommand": "npm install -g @modelcontextprotocol/server-web-search",
+        "category": "web",
+        "popularity": "high"
+      },
+      "category": "web-api",
+      "complexity": 1,
+      "priority": "high",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [
+          "web_search",
+          "fetch_url",
+          "scrape_page"
+        ],
+        "resources": [
+          "http://",
+          "https://"
+        ],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "unknown",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @modelcontextprotocol/server-web-search",
+        "High priority server - consider installing"
+      ]
+    },
+    {
+      "id": "database",
+      "name": "Database MCP",
+      "originalInfo": {
+        "id": "database",
+        "name": "Database MCP",
+        "description": "Connect to and query databases",
+        "location": "registry",
+        "source": "curated",
+        "type": "available",
+        "command": "npx @modelcontextprotocol/server-database",
+        "installCommand": "npm install -g @modelcontextprotocol/server-database",
+        "category": "database",
+        "popularity": "medium"
+      },
+      "category": "database",
+      "complexity": 1,
+      "priority": "high",
+      "isInstalled": false,
+      "isRunning": true,
+      "isConfigured": false,
+      "capabilities": {
+        "tools": [
+          "query_database",
+          "execute_sql",
+          "describe_table"
+        ],
+        "resources": [
+          "database://"
+        ],
+        "prompts": [],
+        "estimated": true
+      },
+      "dependencies": {
+        "system": [],
+        "runtime": [
+          "nodejs"
+        ],
+        "packages": [],
+        "environment": []
+      },
+      "resources": {
+        "memoryUsage": "unknown",
+        "cpuUsage": "unknown",
+        "diskUsage": "unknown",
+        "networkUsage": "unknown",
+        "estimatedLoad": "minimal"
+      },
+      "compatibility": {
+        "platform": "unknown",
+        "nodeVersion": "required",
+        "pythonVersion": "unknown",
+        "issues": [],
+        "score": 1
+      },
+      "conflicts": [],
+      "lastUpdated": null,
+      "version": "unknown",
+      "maintainer": "unknown",
+      "healthStatus": "unknown",
+      "healthScore": 0,
+      "issues": [],
+      "recommendations": [
+        "Install with: npm install -g @modelcontextprotocol/server-database",
+        "High priority server - consider installing"
+      ]
+    }
+  ],
+  "report": {
+    "summary": {
+      "total": 25,
+      "installed": 1,
+      "configured": 0,
+      "running": 25,
+      "healthy": 1
+    },
+    "categories": {
+      "other": [
+        {
+          "id": "project-script-mcp-discovery-demo.js",
+          "name": "mcp-discovery-demo",
+          "originalInfo": {
+            "id": "project-script-mcp-discovery-demo.js",
+            "name": "mcp-discovery-demo",
+            "description": "MCP server script: mcp-discovery-demo.js",
+            "command": "node mcp-discovery-demo.js",
+            "location": "project",
+            "source": "script-file",
+            "type": "script",
+            "scriptPath": "/app/cli-tool/mcp-discovery-demo.js"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": true,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "unknown",
+          "maintainer": "unknown",
+          "healthStatus": "good",
+          "healthScore": 85,
+          "issues": [
+            "Server is not configured"
+          ],
+          "recommendations": [
+            "Configure server in .mcp.json file"
+          ]
+        },
+        {
+          "id": "npm-@playwright/mcp",
+          "name": "@playwright/mcp",
+          "originalInfo": {
+            "id": "npm-@playwright/mcp",
+            "name": "@playwright/mcp",
+            "version": "0.0.32",
+            "description": "Playwright Tools for MCP",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @playwright/mcp",
+            "installCommand": "npm install -g @playwright/mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.0.32",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @playwright/mcp"
+          ]
+        },
+        {
+          "id": "npm-n8n-nodes-mcp",
+          "name": "n8n-nodes-mcp",
+          "originalInfo": {
+            "id": "npm-n8n-nodes-mcp",
+            "name": "n8n-nodes-mcp",
+            "version": "0.1.29",
+            "description": "MCP nodes for n8n ",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx n8n-nodes-mcp",
+            "installCommand": "npm install -g n8n-nodes-mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.1.29",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g n8n-nodes-mcp"
+          ]
+        },
+        {
+          "id": "npm-@upstash/context7-mcp",
+          "name": "@upstash/context7-mcp",
+          "originalInfo": {
+            "id": "npm-@upstash/context7-mcp",
+            "name": "@upstash/context7-mcp",
+            "version": "1.0.14",
+            "description": "MCP server for Context7",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @upstash/context7-mcp",
+            "installCommand": "npm install -g @upstash/context7-mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs",
+              "bash"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.0.14",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @upstash/context7-mcp"
+          ]
+        },
+        {
+          "id": "npm-@browsermcp/mcp",
+          "name": "@browsermcp/mcp",
+          "originalInfo": {
+            "id": "npm-@browsermcp/mcp",
+            "name": "@browsermcp/mcp",
+            "version": "0.1.3",
+            "description": "MCP server for browser automation using Browser MCP",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @browsermcp/mcp",
+            "installCommand": "npm install -g @browsermcp/mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.1.3",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @browsermcp/mcp"
+          ]
+        },
+        {
+          "id": "npm-mcp-framework",
+          "name": "mcp-framework",
+          "originalInfo": {
+            "id": "npm-mcp-framework",
+            "name": "mcp-framework",
+            "version": "0.2.15",
+            "description": "Framework for building Model Context Protocol (MCP) servers in Typescript",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx mcp-framework",
+            "installCommand": "npm install -g mcp-framework"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.2.15",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g mcp-framework"
+          ]
+        },
+        {
+          "id": "npm-@composio/mcp",
+          "name": "@composio/mcp",
+          "originalInfo": {
+            "id": "npm-@composio/mcp",
+            "name": "@composio/mcp",
+            "version": "1.0.7",
+            "description": "MCP CLI tool",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @composio/mcp",
+            "installCommand": "npm install -g @composio/mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.0.7",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @composio/mcp"
+          ]
+        },
+        {
+          "id": "npm-@currents/mcp",
+          "name": "@currents/mcp",
+          "originalInfo": {
+            "id": "npm-@currents/mcp",
+            "name": "@currents/mcp",
+            "version": "1.0.3",
+            "description": "Currents MCP server",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @currents/mcp",
+            "installCommand": "npm install -g @currents/mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.0.3",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @currents/mcp"
+          ]
+        },
+        {
+          "id": "npm-mcp-hello-world",
+          "name": "mcp-hello-world",
+          "originalInfo": {
+            "id": "npm-mcp-hello-world",
+            "name": "mcp-hello-world",
+            "version": "1.1.2",
+            "description": "A simple Hello World MCP server",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx mcp-hello-world",
+            "installCommand": "npm install -g mcp-hello-world"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.1.2",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g mcp-hello-world"
+          ]
+        },
+        {
+          "id": "npm-mcp-proxy",
+          "name": "mcp-proxy",
+          "originalInfo": {
+            "id": "npm-mcp-proxy",
+            "name": "mcp-proxy",
+            "version": "5.4.0",
+            "description": "A TypeScript SSE proxy for MCP servers that use stdio transport.",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx mcp-proxy",
+            "installCommand": "npm install -g mcp-proxy"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "5.4.0",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g mcp-proxy"
+          ]
+        },
+        {
+          "id": "npm-@vercel/mcp-adapter",
+          "name": "@vercel/mcp-adapter",
+          "originalInfo": {
+            "id": "npm-@vercel/mcp-adapter",
+            "name": "@vercel/mcp-adapter",
+            "version": "1.0.0",
+            "description": "Vercel MCP Adapter for Next.js and other frameworks",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @vercel/mcp-adapter",
+            "installCommand": "npm install -g @vercel/mcp-adapter"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.0.0",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @vercel/mcp-adapter"
+          ]
+        },
+        {
+          "id": "npm-@rekog/mcp-nest",
+          "name": "@rekog/mcp-nest",
+          "originalInfo": {
+            "id": "npm-@rekog/mcp-nest",
+            "name": "@rekog/mcp-nest",
+            "version": "1.7.0",
+            "description": "NestJS module for creating Model Context Protocol (MCP) servers",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @rekog/mcp-nest",
+            "installCommand": "npm install -g @rekog/mcp-nest"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.7.0",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @rekog/mcp-nest"
+          ]
+        },
+        {
+          "id": "npm-@translated/lara-mcp",
+          "name": "@translated/lara-mcp",
+          "originalInfo": {
+            "id": "npm-@translated/lara-mcp",
+            "name": "@translated/lara-mcp",
+            "version": "0.0.12",
+            "description": "Lara API official MCP server",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @translated/lara-mcp",
+            "installCommand": "npm install -g @translated/lara-mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.0.12",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @translated/lara-mcp"
+          ]
+        },
+        {
+          "id": "npm-@notionhq/notion-mcp-server",
+          "name": "@notionhq/notion-mcp-server",
+          "originalInfo": {
+            "id": "npm-@notionhq/notion-mcp-server",
+            "name": "@notionhq/notion-mcp-server",
+            "version": "1.8.1",
+            "description": "Official MCP server for Notion API",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @notionhq/notion-mcp-server",
+            "installCommand": "npm install -g @notionhq/notion-mcp-server"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.8.1",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @notionhq/notion-mcp-server"
+          ]
+        },
+        {
+          "id": "npm-mcp-server-code-runner",
+          "name": "mcp-server-code-runner",
+          "originalInfo": {
+            "id": "npm-mcp-server-code-runner",
+            "name": "mcp-server-code-runner",
+            "version": "0.1.7",
+            "description": "Code Runner MCP Server",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx mcp-server-code-runner",
+            "installCommand": "npm install -g mcp-server-code-runner"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.1.7",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g mcp-server-code-runner"
+          ]
+        },
+        {
+          "id": "npm-n8n-mcp",
+          "name": "n8n-mcp",
+          "originalInfo": {
+            "id": "npm-n8n-mcp",
+            "name": "n8n-mcp",
+            "version": "2.7.21",
+            "description": "Integration between n8n workflow automation and Model Context Protocol (MCP)",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx n8n-mcp",
+            "installCommand": "npm install -g n8n-mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "2.7.21",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g n8n-mcp"
+          ]
+        },
+        {
+          "id": "npm-@mobilenext/mobile-mcp",
+          "name": "@mobilenext/mobile-mcp",
+          "originalInfo": {
+            "id": "npm-@mobilenext/mobile-mcp",
+            "name": "@mobilenext/mobile-mcp",
+            "version": "0.0.22",
+            "description": "Mobile MCP",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @mobilenext/mobile-mcp",
+            "installCommand": "npm install -g @mobilenext/mobile-mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.0.22",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @mobilenext/mobile-mcp"
+          ]
+        }
+      ],
+      "utilities": [
+        {
+          "id": "npm-@supabase/mcp-utils",
+          "name": "@supabase/mcp-utils",
+          "originalInfo": {
+            "id": "npm-@supabase/mcp-utils",
+            "name": "@supabase/mcp-utils",
+            "version": "0.2.1",
+            "description": "MCP utilities",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @supabase/mcp-utils",
+            "installCommand": "npm install -g @supabase/mcp-utils"
+          },
+          "category": "utilities",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.2.1",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @supabase/mcp-utils"
+          ]
+        }
+      ],
+      "ai-ml": [
+        {
+          "id": "npm-@langchain/mcp-adapters",
+          "name": "@langchain/mcp-adapters",
+          "originalInfo": {
+            "id": "npm-@langchain/mcp-adapters",
+            "name": "@langchain/mcp-adapters",
+            "version": "0.6.0",
+            "description": "LangChain.js adapters for Model Context Protocol (MCP)",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @langchain/mcp-adapters",
+            "installCommand": "npm install -g @langchain/mcp-adapters"
+          },
+          "category": "ai-ml",
+          "complexity": 1,
+          "priority": "low",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.6.0",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @langchain/mcp-adapters"
+          ]
+        },
+        {
+          "id": "npm-@mastra/mcp",
+          "name": "@mastra/mcp",
+          "originalInfo": {
+            "id": "npm-@mastra/mcp",
+            "name": "@mastra/mcp",
+            "version": "0.10.7",
+            "description": "Model Context Protocol (MCP) client implementation for Mastra, providing seamless integration with MCP-compatible AI models and tools.",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @mastra/mcp",
+            "installCommand": "npm install -g @mastra/mcp"
+          },
+          "category": "ai-ml",
+          "complexity": 1,
+          "priority": "low",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.10.7",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @mastra/mcp"
+          ]
+        }
+      ],
+      "web-api": [
+        {
+          "id": "npm-tavily-mcp",
+          "name": "tavily-mcp",
+          "originalInfo": {
+            "id": "npm-tavily-mcp",
+            "name": "tavily-mcp",
+            "version": "0.2.9",
+            "description": "MCP server for advanced web search using Tavily",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx tavily-mcp",
+            "installCommand": "npm install -g tavily-mcp"
+          },
+          "category": "web-api",
+          "complexity": 1,
+          "priority": "low",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [
+              "web_search",
+              "fetch_url",
+              "scrape_page"
+            ],
+            "resources": [
+              "http://",
+              "https://"
+            ],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.2.9",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g tavily-mcp"
+          ]
+        },
+        {
+          "id": "web-search",
+          "name": "Web Search MCP",
+          "originalInfo": {
+            "id": "web-search",
+            "name": "Web Search MCP",
+            "description": "Search the web and retrieve information",
+            "location": "registry",
+            "source": "curated",
+            "type": "available",
+            "command": "npx @modelcontextprotocol/server-web-search",
+            "installCommand": "npm install -g @modelcontextprotocol/server-web-search",
+            "category": "web",
+            "popularity": "high"
+          },
+          "category": "web-api",
+          "complexity": 1,
+          "priority": "high",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [
+              "web_search",
+              "fetch_url",
+              "scrape_page"
+            ],
+            "resources": [
+              "http://",
+              "https://"
+            ],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "unknown",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @modelcontextprotocol/server-web-search",
+            "High priority server - consider installing"
+          ]
+        }
+      ],
+      "filesystem": [
+        {
+          "id": "filesystem",
+          "name": "Filesystem MCP",
+          "originalInfo": {
+            "id": "filesystem",
+            "name": "Filesystem MCP",
+            "description": "Access and manipulate files and directories",
+            "location": "registry",
+            "source": "curated",
+            "type": "available",
+            "command": "npx @modelcontextprotocol/server-filesystem",
+            "installCommand": "npm install -g @modelcontextprotocol/server-filesystem",
+            "category": "filesystem",
+            "popularity": "high"
+          },
+          "category": "filesystem",
+          "complexity": 1,
+          "priority": "critical",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [
+              "read_file",
+              "write_file",
+              "list_directory",
+              "create_directory"
+            ],
+            "resources": [
+              "file://"
+            ],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "unknown",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @modelcontextprotocol/server-filesystem",
+            "High priority server - consider installing",
+            "Filesystem access - ensure proper permissions"
+          ]
+        }
+      ],
+      "memory-storage": [
+        {
+          "id": "memory-bank",
+          "name": "Memory Bank MCP",
+          "originalInfo": {
+            "id": "memory-bank",
+            "name": "Memory Bank MCP",
+            "description": "Persistent memory and knowledge storage",
+            "location": "registry",
+            "source": "curated",
+            "type": "available",
+            "command": "npx @modelcontextprotocol/server-memory",
+            "installCommand": "npm install -g @modelcontextprotocol/server-memory",
+            "category": "memory",
+            "popularity": "high"
+          },
+          "category": "memory-storage",
+          "complexity": 1,
+          "priority": "critical",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [
+              "store_memory",
+              "retrieve_memory",
+              "search_memory"
+            ],
+            "resources": [
+              "memory://"
+            ],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "unknown",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @modelcontextprotocol/server-memory",
+            "High priority server - consider installing"
+          ]
+        }
+      ],
+      "database": [
+        {
+          "id": "database",
+          "name": "Database MCP",
+          "originalInfo": {
+            "id": "database",
+            "name": "Database MCP",
+            "description": "Connect to and query databases",
+            "location": "registry",
+            "source": "curated",
+            "type": "available",
+            "command": "npx @modelcontextprotocol/server-database",
+            "installCommand": "npm install -g @modelcontextprotocol/server-database",
+            "category": "database",
+            "popularity": "medium"
+          },
+          "category": "database",
+          "complexity": 1,
+          "priority": "high",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [
+              "query_database",
+              "execute_sql",
+              "describe_table"
+            ],
+            "resources": [
+              "database://"
+            ],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "unknown",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @modelcontextprotocol/server-database",
+            "High priority server - consider installing"
+          ]
+        }
+      ]
+    },
+    "priorities": {
+      "minimal": [
+        {
+          "id": "project-script-mcp-discovery-demo.js",
+          "name": "mcp-discovery-demo",
+          "originalInfo": {
+            "id": "project-script-mcp-discovery-demo.js",
+            "name": "mcp-discovery-demo",
+            "description": "MCP server script: mcp-discovery-demo.js",
+            "command": "node mcp-discovery-demo.js",
+            "location": "project",
+            "source": "script-file",
+            "type": "script",
+            "scriptPath": "/app/cli-tool/mcp-discovery-demo.js"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": true,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "unknown",
+          "maintainer": "unknown",
+          "healthStatus": "good",
+          "healthScore": 85,
+          "issues": [
+            "Server is not configured"
+          ],
+          "recommendations": [
+            "Configure server in .mcp.json file"
+          ]
+        },
+        {
+          "id": "npm-@playwright/mcp",
+          "name": "@playwright/mcp",
+          "originalInfo": {
+            "id": "npm-@playwright/mcp",
+            "name": "@playwright/mcp",
+            "version": "0.0.32",
+            "description": "Playwright Tools for MCP",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @playwright/mcp",
+            "installCommand": "npm install -g @playwright/mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.0.32",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @playwright/mcp"
+          ]
+        },
+        {
+          "id": "npm-n8n-nodes-mcp",
+          "name": "n8n-nodes-mcp",
+          "originalInfo": {
+            "id": "npm-n8n-nodes-mcp",
+            "name": "n8n-nodes-mcp",
+            "version": "0.1.29",
+            "description": "MCP nodes for n8n ",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx n8n-nodes-mcp",
+            "installCommand": "npm install -g n8n-nodes-mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.1.29",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g n8n-nodes-mcp"
+          ]
+        },
+        {
+          "id": "npm-@upstash/context7-mcp",
+          "name": "@upstash/context7-mcp",
+          "originalInfo": {
+            "id": "npm-@upstash/context7-mcp",
+            "name": "@upstash/context7-mcp",
+            "version": "1.0.14",
+            "description": "MCP server for Context7",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @upstash/context7-mcp",
+            "installCommand": "npm install -g @upstash/context7-mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs",
+              "bash"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.0.14",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @upstash/context7-mcp"
+          ]
+        },
+        {
+          "id": "npm-@supabase/mcp-utils",
+          "name": "@supabase/mcp-utils",
+          "originalInfo": {
+            "id": "npm-@supabase/mcp-utils",
+            "name": "@supabase/mcp-utils",
+            "version": "0.2.1",
+            "description": "MCP utilities",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @supabase/mcp-utils",
+            "installCommand": "npm install -g @supabase/mcp-utils"
+          },
+          "category": "utilities",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.2.1",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @supabase/mcp-utils"
+          ]
+        },
+        {
+          "id": "npm-@browsermcp/mcp",
+          "name": "@browsermcp/mcp",
+          "originalInfo": {
+            "id": "npm-@browsermcp/mcp",
+            "name": "@browsermcp/mcp",
+            "version": "0.1.3",
+            "description": "MCP server for browser automation using Browser MCP",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @browsermcp/mcp",
+            "installCommand": "npm install -g @browsermcp/mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.1.3",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @browsermcp/mcp"
+          ]
+        },
+        {
+          "id": "npm-mcp-framework",
+          "name": "mcp-framework",
+          "originalInfo": {
+            "id": "npm-mcp-framework",
+            "name": "mcp-framework",
+            "version": "0.2.15",
+            "description": "Framework for building Model Context Protocol (MCP) servers in Typescript",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx mcp-framework",
+            "installCommand": "npm install -g mcp-framework"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.2.15",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g mcp-framework"
+          ]
+        },
+        {
+          "id": "npm-@composio/mcp",
+          "name": "@composio/mcp",
+          "originalInfo": {
+            "id": "npm-@composio/mcp",
+            "name": "@composio/mcp",
+            "version": "1.0.7",
+            "description": "MCP CLI tool",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @composio/mcp",
+            "installCommand": "npm install -g @composio/mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.0.7",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @composio/mcp"
+          ]
+        },
+        {
+          "id": "npm-@currents/mcp",
+          "name": "@currents/mcp",
+          "originalInfo": {
+            "id": "npm-@currents/mcp",
+            "name": "@currents/mcp",
+            "version": "1.0.3",
+            "description": "Currents MCP server",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @currents/mcp",
+            "installCommand": "npm install -g @currents/mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.0.3",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @currents/mcp"
+          ]
+        },
+        {
+          "id": "npm-mcp-hello-world",
+          "name": "mcp-hello-world",
+          "originalInfo": {
+            "id": "npm-mcp-hello-world",
+            "name": "mcp-hello-world",
+            "version": "1.1.2",
+            "description": "A simple Hello World MCP server",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx mcp-hello-world",
+            "installCommand": "npm install -g mcp-hello-world"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.1.2",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g mcp-hello-world"
+          ]
+        },
+        {
+          "id": "npm-mcp-proxy",
+          "name": "mcp-proxy",
+          "originalInfo": {
+            "id": "npm-mcp-proxy",
+            "name": "mcp-proxy",
+            "version": "5.4.0",
+            "description": "A TypeScript SSE proxy for MCP servers that use stdio transport.",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx mcp-proxy",
+            "installCommand": "npm install -g mcp-proxy"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "5.4.0",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g mcp-proxy"
+          ]
+        },
+        {
+          "id": "npm-@vercel/mcp-adapter",
+          "name": "@vercel/mcp-adapter",
+          "originalInfo": {
+            "id": "npm-@vercel/mcp-adapter",
+            "name": "@vercel/mcp-adapter",
+            "version": "1.0.0",
+            "description": "Vercel MCP Adapter for Next.js and other frameworks",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @vercel/mcp-adapter",
+            "installCommand": "npm install -g @vercel/mcp-adapter"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.0.0",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @vercel/mcp-adapter"
+          ]
+        },
+        {
+          "id": "npm-@rekog/mcp-nest",
+          "name": "@rekog/mcp-nest",
+          "originalInfo": {
+            "id": "npm-@rekog/mcp-nest",
+            "name": "@rekog/mcp-nest",
+            "version": "1.7.0",
+            "description": "NestJS module for creating Model Context Protocol (MCP) servers",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @rekog/mcp-nest",
+            "installCommand": "npm install -g @rekog/mcp-nest"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.7.0",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @rekog/mcp-nest"
+          ]
+        },
+        {
+          "id": "npm-@translated/lara-mcp",
+          "name": "@translated/lara-mcp",
+          "originalInfo": {
+            "id": "npm-@translated/lara-mcp",
+            "name": "@translated/lara-mcp",
+            "version": "0.0.12",
+            "description": "Lara API official MCP server",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @translated/lara-mcp",
+            "installCommand": "npm install -g @translated/lara-mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.0.12",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @translated/lara-mcp"
+          ]
+        },
+        {
+          "id": "npm-@notionhq/notion-mcp-server",
+          "name": "@notionhq/notion-mcp-server",
+          "originalInfo": {
+            "id": "npm-@notionhq/notion-mcp-server",
+            "name": "@notionhq/notion-mcp-server",
+            "version": "1.8.1",
+            "description": "Official MCP server for Notion API",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @notionhq/notion-mcp-server",
+            "installCommand": "npm install -g @notionhq/notion-mcp-server"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "1.8.1",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @notionhq/notion-mcp-server"
+          ]
+        },
+        {
+          "id": "npm-mcp-server-code-runner",
+          "name": "mcp-server-code-runner",
+          "originalInfo": {
+            "id": "npm-mcp-server-code-runner",
+            "name": "mcp-server-code-runner",
+            "version": "0.1.7",
+            "description": "Code Runner MCP Server",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx mcp-server-code-runner",
+            "installCommand": "npm install -g mcp-server-code-runner"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.1.7",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g mcp-server-code-runner"
+          ]
+        },
+        {
+          "id": "npm-n8n-mcp",
+          "name": "n8n-mcp",
+          "originalInfo": {
+            "id": "npm-n8n-mcp",
+            "name": "n8n-mcp",
+            "version": "2.7.21",
+            "description": "Integration between n8n workflow automation and Model Context Protocol (MCP)",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx n8n-mcp",
+            "installCommand": "npm install -g n8n-mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "2.7.21",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g n8n-mcp"
+          ]
+        },
+        {
+          "id": "npm-@mobilenext/mobile-mcp",
+          "name": "@mobilenext/mobile-mcp",
+          "originalInfo": {
+            "id": "npm-@mobilenext/mobile-mcp",
+            "name": "@mobilenext/mobile-mcp",
+            "version": "0.0.22",
+            "description": "Mobile MCP",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @mobilenext/mobile-mcp",
+            "installCommand": "npm install -g @mobilenext/mobile-mcp"
+          },
+          "category": "other",
+          "complexity": 1,
+          "priority": "minimal",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.0.22",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @mobilenext/mobile-mcp"
+          ]
+        }
+      ],
+      "low": [
+        {
+          "id": "npm-@langchain/mcp-adapters",
+          "name": "@langchain/mcp-adapters",
+          "originalInfo": {
+            "id": "npm-@langchain/mcp-adapters",
+            "name": "@langchain/mcp-adapters",
+            "version": "0.6.0",
+            "description": "LangChain.js adapters for Model Context Protocol (MCP)",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @langchain/mcp-adapters",
+            "installCommand": "npm install -g @langchain/mcp-adapters"
+          },
+          "category": "ai-ml",
+          "complexity": 1,
+          "priority": "low",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.6.0",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @langchain/mcp-adapters"
+          ]
+        },
+        {
+          "id": "npm-@mastra/mcp",
+          "name": "@mastra/mcp",
+          "originalInfo": {
+            "id": "npm-@mastra/mcp",
+            "name": "@mastra/mcp",
+            "version": "0.10.7",
+            "description": "Model Context Protocol (MCP) client implementation for Mastra, providing seamless integration with MCP-compatible AI models and tools.",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx @mastra/mcp",
+            "installCommand": "npm install -g @mastra/mcp"
+          },
+          "category": "ai-ml",
+          "complexity": 1,
+          "priority": "low",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [],
+            "resources": [],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.10.7",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @mastra/mcp"
+          ]
+        },
+        {
+          "id": "npm-tavily-mcp",
+          "name": "tavily-mcp",
+          "originalInfo": {
+            "id": "npm-tavily-mcp",
+            "name": "tavily-mcp",
+            "version": "0.2.9",
+            "description": "MCP server for advanced web search using Tavily",
+            "location": "npm-registry",
+            "source": "npm-search",
+            "type": "available",
+            "command": "npx tavily-mcp",
+            "installCommand": "npm install -g tavily-mcp"
+          },
+          "category": "web-api",
+          "complexity": 1,
+          "priority": "low",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [
+              "web_search",
+              "fetch_url",
+              "scrape_page"
+            ],
+            "resources": [
+              "http://",
+              "https://"
+            ],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "0.2.9",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g tavily-mcp"
+          ]
+        }
+      ],
+      "critical": [
+        {
+          "id": "filesystem",
+          "name": "Filesystem MCP",
+          "originalInfo": {
+            "id": "filesystem",
+            "name": "Filesystem MCP",
+            "description": "Access and manipulate files and directories",
+            "location": "registry",
+            "source": "curated",
+            "type": "available",
+            "command": "npx @modelcontextprotocol/server-filesystem",
+            "installCommand": "npm install -g @modelcontextprotocol/server-filesystem",
+            "category": "filesystem",
+            "popularity": "high"
+          },
+          "category": "filesystem",
+          "complexity": 1,
+          "priority": "critical",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [
+              "read_file",
+              "write_file",
+              "list_directory",
+              "create_directory"
+            ],
+            "resources": [
+              "file://"
+            ],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "unknown",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @modelcontextprotocol/server-filesystem",
+            "High priority server - consider installing",
+            "Filesystem access - ensure proper permissions"
+          ]
+        },
+        {
+          "id": "memory-bank",
+          "name": "Memory Bank MCP",
+          "originalInfo": {
+            "id": "memory-bank",
+            "name": "Memory Bank MCP",
+            "description": "Persistent memory and knowledge storage",
+            "location": "registry",
+            "source": "curated",
+            "type": "available",
+            "command": "npx @modelcontextprotocol/server-memory",
+            "installCommand": "npm install -g @modelcontextprotocol/server-memory",
+            "category": "memory",
+            "popularity": "high"
+          },
+          "category": "memory-storage",
+          "complexity": 1,
+          "priority": "critical",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [
+              "store_memory",
+              "retrieve_memory",
+              "search_memory"
+            ],
+            "resources": [
+              "memory://"
+            ],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "unknown",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @modelcontextprotocol/server-memory",
+            "High priority server - consider installing"
+          ]
+        }
+      ],
+      "high": [
+        {
+          "id": "web-search",
+          "name": "Web Search MCP",
+          "originalInfo": {
+            "id": "web-search",
+            "name": "Web Search MCP",
+            "description": "Search the web and retrieve information",
+            "location": "registry",
+            "source": "curated",
+            "type": "available",
+            "command": "npx @modelcontextprotocol/server-web-search",
+            "installCommand": "npm install -g @modelcontextprotocol/server-web-search",
+            "category": "web",
+            "popularity": "high"
+          },
+          "category": "web-api",
+          "complexity": 1,
+          "priority": "high",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [
+              "web_search",
+              "fetch_url",
+              "scrape_page"
+            ],
+            "resources": [
+              "http://",
+              "https://"
+            ],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "unknown",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @modelcontextprotocol/server-web-search",
+            "High priority server - consider installing"
+          ]
+        },
+        {
+          "id": "database",
+          "name": "Database MCP",
+          "originalInfo": {
+            "id": "database",
+            "name": "Database MCP",
+            "description": "Connect to and query databases",
+            "location": "registry",
+            "source": "curated",
+            "type": "available",
+            "command": "npx @modelcontextprotocol/server-database",
+            "installCommand": "npm install -g @modelcontextprotocol/server-database",
+            "category": "database",
+            "popularity": "medium"
+          },
+          "category": "database",
+          "complexity": 1,
+          "priority": "high",
+          "isInstalled": false,
+          "isRunning": true,
+          "isConfigured": false,
+          "capabilities": {
+            "tools": [
+              "query_database",
+              "execute_sql",
+              "describe_table"
+            ],
+            "resources": [
+              "database://"
+            ],
+            "prompts": [],
+            "estimated": true
+          },
+          "dependencies": {
+            "system": [],
+            "runtime": [
+              "nodejs"
+            ],
+            "packages": [],
+            "environment": []
+          },
+          "resources": {
+            "memoryUsage": "unknown",
+            "cpuUsage": "unknown",
+            "diskUsage": "unknown",
+            "networkUsage": "unknown",
+            "estimatedLoad": "minimal"
+          },
+          "compatibility": {
+            "platform": "unknown",
+            "nodeVersion": "required",
+            "pythonVersion": "unknown",
+            "issues": [],
+            "score": 1
+          },
+          "conflicts": [],
+          "lastUpdated": null,
+          "version": "unknown",
+          "maintainer": "unknown",
+          "healthStatus": "unknown",
+          "healthScore": 0,
+          "issues": [],
+          "recommendations": [
+            "Install with: npm install -g @modelcontextprotocol/server-database",
+            "High priority server - consider installing"
+          ]
+        }
+      ]
+    },
+    "issues": [
+      "Server is not configured"
+    ],
+    "recommendations": [
+      "Configure server in .mcp.json file",
+      "Install with: npm install -g @playwright/mcp",
+      "Install with: npm install -g n8n-nodes-mcp",
+      "Install with: npm install -g @upstash/context7-mcp",
+      "Install with: npm install -g @supabase/mcp-utils",
+      "Install with: npm install -g @browsermcp/mcp",
+      "Install with: npm install -g mcp-framework",
+      "Install with: npm install -g @langchain/mcp-adapters",
+      "Install with: npm install -g @composio/mcp",
+      "Install with: npm install -g @mastra/mcp",
+      "Install with: npm install -g @currents/mcp",
+      "Install with: npm install -g mcp-hello-world",
+      "Install with: npm install -g mcp-proxy",
+      "Install with: npm install -g @vercel/mcp-adapter",
+      "Install with: npm install -g @rekog/mcp-nest",
+      "Install with: npm install -g @translated/lara-mcp",
+      "Install with: npm install -g @notionhq/notion-mcp-server",
+      "Install with: npm install -g mcp-server-code-runner",
+      "Install with: npm install -g n8n-mcp",
+      "Install with: npm install -g tavily-mcp",
+      "Install with: npm install -g @mobilenext/mobile-mcp",
+      "Install with: npm install -g @modelcontextprotocol/server-filesystem",
+      "High priority server - consider installing",
+      "Filesystem access - ensure proper permissions",
+      "Install with: npm install -g @modelcontextprotocol/server-memory",
+      "Install with: npm install -g @modelcontextprotocol/server-web-search",
+      "Install with: npm install -g @modelcontextprotocol/server-database"
+    ],
+    "topServers": [
+      {
+        "id": "filesystem",
+        "name": "Filesystem MCP",
+        "originalInfo": {
+          "id": "filesystem",
+          "name": "Filesystem MCP",
+          "description": "Access and manipulate files and directories",
+          "location": "registry",
+          "source": "curated",
+          "type": "available",
+          "command": "npx @modelcontextprotocol/server-filesystem",
+          "installCommand": "npm install -g @modelcontextprotocol/server-filesystem",
+          "category": "filesystem",
+          "popularity": "high"
+        },
+        "category": "filesystem",
+        "complexity": 1,
+        "priority": "critical",
+        "isInstalled": false,
+        "isRunning": true,
+        "isConfigured": false,
+        "capabilities": {
+          "tools": [
+            "read_file",
+            "write_file",
+            "list_directory",
+            "create_directory"
+          ],
+          "resources": [
+            "file://"
+          ],
+          "prompts": [],
+          "estimated": true
+        },
+        "dependencies": {
+          "system": [],
+          "runtime": [
+            "nodejs"
+          ],
+          "packages": [],
+          "environment": []
+        },
+        "resources": {
+          "memoryUsage": "unknown",
+          "cpuUsage": "unknown",
+          "diskUsage": "unknown",
+          "networkUsage": "unknown",
+          "estimatedLoad": "minimal"
+        },
+        "compatibility": {
+          "platform": "unknown",
+          "nodeVersion": "required",
+          "pythonVersion": "unknown",
+          "issues": [],
+          "score": 1
+        },
+        "conflicts": [],
+        "lastUpdated": null,
+        "version": "unknown",
+        "maintainer": "unknown",
+        "healthStatus": "unknown",
+        "healthScore": 0,
+        "issues": [],
+        "recommendations": [
+          "Install with: npm install -g @modelcontextprotocol/server-filesystem",
+          "High priority server - consider installing",
+          "Filesystem access - ensure proper permissions"
+        ]
+      },
+      {
+        "id": "memory-bank",
+        "name": "Memory Bank MCP",
+        "originalInfo": {
+          "id": "memory-bank",
+          "name": "Memory Bank MCP",
+          "description": "Persistent memory and knowledge storage",
+          "location": "registry",
+          "source": "curated",
+          "type": "available",
+          "command": "npx @modelcontextprotocol/server-memory",
+          "installCommand": "npm install -g @modelcontextprotocol/server-memory",
+          "category": "memory",
+          "popularity": "high"
+        },
+        "category": "memory-storage",
+        "complexity": 1,
+        "priority": "critical",
+        "isInstalled": false,
+        "isRunning": true,
+        "isConfigured": false,
+        "capabilities": {
+          "tools": [
+            "store_memory",
+            "retrieve_memory",
+            "search_memory"
+          ],
+          "resources": [
+            "memory://"
+          ],
+          "prompts": [],
+          "estimated": true
+        },
+        "dependencies": {
+          "system": [],
+          "runtime": [
+            "nodejs"
+          ],
+          "packages": [],
+          "environment": []
+        },
+        "resources": {
+          "memoryUsage": "unknown",
+          "cpuUsage": "unknown",
+          "diskUsage": "unknown",
+          "networkUsage": "unknown",
+          "estimatedLoad": "minimal"
+        },
+        "compatibility": {
+          "platform": "unknown",
+          "nodeVersion": "required",
+          "pythonVersion": "unknown",
+          "issues": [],
+          "score": 1
+        },
+        "conflicts": [],
+        "lastUpdated": null,
+        "version": "unknown",
+        "maintainer": "unknown",
+        "healthStatus": "unknown",
+        "healthScore": 0,
+        "issues": [],
+        "recommendations": [
+          "Install with: npm install -g @modelcontextprotocol/server-memory",
+          "High priority server - consider installing"
+        ]
+      },
+      {
+        "id": "web-search",
+        "name": "Web Search MCP",
+        "originalInfo": {
+          "id": "web-search",
+          "name": "Web Search MCP",
+          "description": "Search the web and retrieve information",
+          "location": "registry",
+          "source": "curated",
+          "type": "available",
+          "command": "npx @modelcontextprotocol/server-web-search",
+          "installCommand": "npm install -g @modelcontextprotocol/server-web-search",
+          "category": "web",
+          "popularity": "high"
+        },
+        "category": "web-api",
+        "complexity": 1,
+        "priority": "high",
+        "isInstalled": false,
+        "isRunning": true,
+        "isConfigured": false,
+        "capabilities": {
+          "tools": [
+            "web_search",
+            "fetch_url",
+            "scrape_page"
+          ],
+          "resources": [
+            "http://",
+            "https://"
+          ],
+          "prompts": [],
+          "estimated": true
+        },
+        "dependencies": {
+          "system": [],
+          "runtime": [
+            "nodejs"
+          ],
+          "packages": [],
+          "environment": []
+        },
+        "resources": {
+          "memoryUsage": "unknown",
+          "cpuUsage": "unknown",
+          "diskUsage": "unknown",
+          "networkUsage": "unknown",
+          "estimatedLoad": "minimal"
+        },
+        "compatibility": {
+          "platform": "unknown",
+          "nodeVersion": "required",
+          "pythonVersion": "unknown",
+          "issues": [],
+          "score": 1
+        },
+        "conflicts": [],
+        "lastUpdated": null,
+        "version": "unknown",
+        "maintainer": "unknown",
+        "healthStatus": "unknown",
+        "healthScore": 0,
+        "issues": [],
+        "recommendations": [
+          "Install with: npm install -g @modelcontextprotocol/server-web-search",
+          "High priority server - consider installing"
+        ]
+      },
+      {
+        "id": "database",
+        "name": "Database MCP",
+        "originalInfo": {
+          "id": "database",
+          "name": "Database MCP",
+          "description": "Connect to and query databases",
+          "location": "registry",
+          "source": "curated",
+          "type": "available",
+          "command": "npx @modelcontextprotocol/server-database",
+          "installCommand": "npm install -g @modelcontextprotocol/server-database",
+          "category": "database",
+          "popularity": "medium"
+        },
+        "category": "database",
+        "complexity": 1,
+        "priority": "high",
+        "isInstalled": false,
+        "isRunning": true,
+        "isConfigured": false,
+        "capabilities": {
+          "tools": [
+            "query_database",
+            "execute_sql",
+            "describe_table"
+          ],
+          "resources": [
+            "database://"
+          ],
+          "prompts": [],
+          "estimated": true
+        },
+        "dependencies": {
+          "system": [],
+          "runtime": [
+            "nodejs"
+          ],
+          "packages": [],
+          "environment": []
+        },
+        "resources": {
+          "memoryUsage": "unknown",
+          "cpuUsage": "unknown",
+          "diskUsage": "unknown",
+          "networkUsage": "unknown",
+          "estimatedLoad": "minimal"
+        },
+        "compatibility": {
+          "platform": "unknown",
+          "nodeVersion": "required",
+          "pythonVersion": "unknown",
+          "issues": [],
+          "score": 1
+        },
+        "conflicts": [],
+        "lastUpdated": null,
+        "version": "unknown",
+        "maintainer": "unknown",
+        "healthStatus": "unknown",
+        "healthScore": 0,
+        "issues": [],
+        "recommendations": [
+          "Install with: npm install -g @modelcontextprotocol/server-database",
+          "High priority server - consider installing"
+        ]
+      }
+    ],
+    "problemServers": []
+  },
+  "timestamp": "2025-07-29T09:02:18.935Z"
+}
