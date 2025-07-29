@@ -131,37 +131,71 @@ class StateCalculator {
   }
 
   /**
-   * Determine conversation status (active/recent/inactive)
+   * Determine conversation status (active/waiting/idle/completed)
    * @param {Array} messages - Parsed conversation messages
    * @param {Date} lastModified - File last modification time
    * @returns {string} Conversation status
    */
   determineConversationStatus(messages, lastModified) {
+    // Handle null/undefined inputs
+    if (!messages || !Array.isArray(messages) || !lastModified) {
+      return 'idle';
+    }
+
     const now = new Date();
     const timeDiff = now - lastModified;
     const minutesAgo = timeDiff / (1000 * 60);
 
+    // Handle empty messages array
     if (messages.length === 0) {
-      return minutesAgo < 5 ? 'active' : 'inactive';
+      return minutesAgo < 5 ? 'active' : 'idle';
+    }
+
+    // Filter out malformed messages
+    const validMessages = messages.filter(msg => 
+      msg && typeof msg === 'object' && msg.role && msg.timestamp
+    );
+
+    if (validMessages.length === 0) {
+      return 'idle';
     }
 
     // Sort messages by timestamp
-    const sortedMessages = messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+    const sortedMessages = validMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
     const lastMessage = sortedMessages[sortedMessages.length - 1];
     const lastMessageTime = new Date(lastMessage.timestamp);
     const lastMessageMinutesAgo = (now - lastMessageTime) / (1000 * 60);
 
-    // More balanced logic - active conversations and recent activity
-    if (lastMessage.role === 'user' && lastMessageMinutesAgo < 3) {
-      return 'active';
-    } else if (lastMessage.role === 'assistant' && lastMessageMinutesAgo < 5) {
-      return 'active';
+    // Determine status based on conversation flow and timing
+    if (lastMessageMinutesAgo > 60) {
+      // Conversation is old (over 1 hour)
+      return 'idle';
     }
 
-    // Use file modification time for recent activity
+    if (lastMessage.role === 'user') {
+      // Last message was from user
+      if (lastMessageMinutesAgo < 5) {
+        return 'waiting'; // Recent user message, waiting for assistant response
+      } else if (lastMessageMinutesAgo < 30) {
+        return 'active'; // Moderately recent user message
+      } else {
+        return 'idle'; // Old user message
+      }
+    } else if (lastMessage.role === 'assistant') {
+      // Last message was from assistant
+      if (lastMessageMinutesAgo < 5) {
+        return 'active'; // Recent assistant response
+      } else if (lastMessageMinutesAgo < 30) {
+        return 'completed'; // Assistant responded, conversation likely complete
+      } else {
+        return 'idle'; // Old assistant message
+      }
+    }
+
+    // Fallback to time-based classification
     if (minutesAgo < 5) return 'active';
-    if (minutesAgo < 30) return 'recent';
-    return 'inactive';
+    if (minutesAgo < 30) return 'completed';
+    return 'idle';
   }
 
   /**
