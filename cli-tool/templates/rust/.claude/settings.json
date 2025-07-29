@@ -1,0 +1,142 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit",
+      "MultiEdit",
+      "Write",
+      "Bash(cargo:*)",
+      "Bash(rustc:*)",
+      "Bash(rustfmt:*)",
+      "Bash(clippy:*)",
+      "Bash(rustup:*)",
+      "Bash(rust-analyzer:*)",
+      "Bash(git:*)",
+      "Bash(make:*)",
+      "Bash(docker:*)"
+    ],
+    "deny": [
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(rm -rf:*)"
+    ],
+    "defaultMode": "allowEdits"
+  },
+  "env": {
+    "BASH_DEFAULT_TIMEOUT_MS": "120000",
+    "BASH_MAX_OUTPUT_LENGTH": "25000",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
+    "RUST_BACKTRACE": "1",
+    "CARGO_TERM_COLOR": "always",
+    "RUSTFLAGS": "-D warnings"
+  },
+  "includeCoAuthoredBy": true,
+  "cleanupPeriodDays": 30,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"\\(.tool_input.command) - \\(.tool_input.description // \"No description\")\"' >> ~/.claude/bash-command-log.txt"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"); CONTENT=$(echo $STDIN_JSON | jq -r '.tool_input.content // \"\"); if [[ \"$FILE\" =~ \\.rs$ ]] && echo \"$CONTENT\" | grep -q 'println!'; then echo 'Consider using proper logging instead of println! for production code' >&2; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" == \"Cargo.toml\" ]]; then echo 'Checking for vulnerable dependencies...'; if command -v cargo-audit >/dev/null 2>&1; then cargo audit; else echo 'cargo-audit not found. Install with: cargo install cargo-audit'; fi; fi",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.rs$ ]]; then rustfmt \"$FILE\" 2>/dev/null || echo 'rustfmt skipped (not installed)'; fi",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.rs$ ]]; then RESULT=$(cargo clippy --message-format=short -- -D warnings 2>&1); if [ $? -ne 0 ] && command -v cargo >/dev/null 2>&1; then echo \"Clippy warnings/errors found: $RESULT\" >&2; exit 2; fi; fi",
+            "timeout": 60
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.rs$ && \"$FILE\" != *\"test\"* ]]; then cargo check --message-format=short 2>/dev/null || echo 'Cargo check failed - there may be compilation errors'; fi",
+            "timeout": 60
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.rs$ && \"$FILE\" != *\"main.rs\" && \"$FILE\" != *\"lib.rs\" ]]; then MODULE=$(basename \"$FILE\" .rs); if find . -name '*test*.rs' -o -name 'tests' -type d | grep -q .; then echo \"Running tests related to $MODULE...\"; cargo test $MODULE 2>/dev/null || echo 'No tests found or test execution failed'; fi; fi",
+            "timeout": 90
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"Claude Code notification: $(date)\" >> ~/.claude/notifications.log"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ -f Cargo.toml && $(git status --porcelain | grep '\\.rs$') ]]; then echo 'Running clippy on changed Rust files...'; if command -v cargo >/dev/null 2>&1; then cargo clippy -- -D warnings; else echo 'Cargo not found'; fi; fi",
+            "timeout": 120
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ -f Cargo.toml && $(git status --porcelain | grep '\\.rs$') ]]; then echo 'Running security audit...'; if command -v cargo-audit >/dev/null 2>&1; then cargo audit; else echo 'cargo-audit not found. Install with: cargo install cargo-audit'; fi; fi",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
