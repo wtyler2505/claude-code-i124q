@@ -15,6 +15,7 @@ const { runMCPStats } = require('./mcp-stats');
 const { runAnalytics } = require('./analytics');
 const { runHealthCheck } = require('./health-check');
 const { AIAgentManager } = require('./ai-agents');
+const { MCPServerManager } = require('./mcp-discovery');
 
 async function showMainMenu() {
   console.log('');
