@@ -4,20 +4,7 @@
  */
 
 // Load the StateService class
-const fs = require('fs');
-const path = require('path');
-
-// Load StateService from the actual file
-const StateServicePath = path.join(__dirname, '../../src/analytics-web/services/StateService.js');
-const StateServiceCode = fs.readFileSync(StateServicePath, 'utf8');
-
-// Create a module-like environment
-const moduleExports = {};
-const module = { exports: moduleExports };
-
-// Execute the StateService code in our test environment
-eval(StateServiceCode);
-const StateService = moduleExports.StateService || global.StateService;
+const StateService = require('../../src/analytics-web/services/StateService');
 
 describe('StateService', () => {
   let stateService;
