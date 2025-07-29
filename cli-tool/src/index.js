@@ -462,6 +462,12 @@ async function createClaudeConfig(options = {}) {
     return;
   }
   
+  // Handle MCP Discovery
+  if (options.mcpDiscovery || options.mcpManager || options.mcpDiscover) {
+    await runMCPDiscovery(options);
+    return;
+  }
+  
   // Handle specific AI agent options
   if (options.agentReview) {
     const agentManager = new AIAgentManager(targetDir);
