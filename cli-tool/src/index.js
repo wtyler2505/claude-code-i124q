@@ -25,6 +25,11 @@ async function showMainMenu() {
     message: 'What would you like to do?',
     choices: [
       {
+        name: '🤖 AI Agents - Code review, optimization, and documentation with AI',
+        value: 'ai-agents',
+        short: 'AI Agents'
+      },
+      {
         name: '📊 Analytics Dashboard - Monitor your Claude Code usage and sessions',
         value: 'analytics',
         short: 'Analytics Dashboard'
