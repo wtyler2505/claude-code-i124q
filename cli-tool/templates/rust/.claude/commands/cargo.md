@@ -1,10 +1,10 @@
-# Cargo Package Management
+# Cargo Package Manager
 
-Manage Rust packages, dependencies, and workspace configuration with Cargo.
+Comprehensive Cargo package management, dependency handling, and project lifecycle management.
 
 ## Purpose
 
-This command helps you effectively manage Rust projects using Cargo's comprehensive package management and build system.
+This command helps you manage Rust projects with Cargo, including dependency management, publishing, and project configuration.
 
 ## Usage
 
@@ -14,35 +14,33 @@ This command helps you effectively manage Rust projects using Cargo's comprehens
 
 ## What this command does
 
-1. **Manages dependencies** and versions
-2. **Handles workspace configuration** for multi-crate projects
-3. **Publishes packages** to crates.io
-4. **Provides project utilities** and maintenance tools
+1. **Manages dependencies** with version constraints and features
+2. **Handles project creation** and configuration
+3. **Manages publishing** to crates.io and private registries
+4. **Provides workspace management** for multi-crate projects
+5. **Handles build configurations** and profiles
 
 ## Example Commands
 
 ### Project Management
 ```bash
 # Create new binary project
-cargo new my-project
+cargo new my-app
 
 # Create new library project
-cargo new --lib my-lib
+cargo new my-lib --lib
 
-# Create new project in current directory
+# Create project with specific edition
+cargo new my-app --edition 2021
+
+# Create project with VCS
+cargo new my-app --vcs git
+
+# Initialize project in existing directory
 cargo init
 
-# Create project with specific name
-cargo init --name my-project
-
-# Generate Cargo.lock
-cargo generate-lockfile
-
-# Update dependencies
-cargo update
-
-# Update specific dependency
-cargo update -p serde
+# Initialize library in existing directory
+cargo init --lib
 ```
 
 ### Dependency Management
@@ -50,291 +48,172 @@ cargo update -p serde
 # Add dependency
 cargo add serde
 
+# Add dependency with specific version
+cargo add serde@1.0.150
+
+# Add dependency with features
+cargo add serde --features derive
+
 # Add development dependency
 cargo add --dev tokio-test
 
 # Add build dependency
 cargo add --build cc
 
-# Add dependency with features
-cargo add serde --features derive
-
-# Add dependency with version constraint
-cargo add serde@1.0
-
-# Add git dependency
-cargo add serde --git https://github.com/serde-rs/serde
-
-# Add local path dependency
-cargo add my-lib --path ../my-lib
-
-# Remove dependency
-cargo rm serde
+# Add optional dependency
+cargo add --optional redis
 ```
 
-### Information and Search
+### Dependency Information
 ```bash
-# Search for crates
-cargo search serde
-
-# Show information about a crate
-cargo show serde
-
-# List dependencies
+# Show dependency tree
 cargo tree
 
-# Show outdated dependencies
-cargo tree --duplicates
+# Show specific dependency
+cargo tree --package serde
 
-# Show dependency graph
-cargo tree --depth 2
+# Show dependencies in specific format
+cargo tree --format "{p} {f}"
 
-# Check dependency licenses
-cargo tree --format "{p} {l}"
-```
+# Show reverse dependencies
+cargo tree --invert tokio
 
-### Building and Running
-```bash
-# Build project
-cargo build
+# Check for outdated dependencies
+cargo outdated
 
-# Build optimized (release mode)
-cargo build --release
-
-# Run binary
-cargo run
-
-# Run with arguments
-cargo run -- --help
-
-# Run specific binary
-cargo run --bin my-app
-
-# Run example
-cargo run --example hello
-
-# Check project (fast compile check)
-cargo check
-
-# Clean build artifacts
-cargo clean
+# Show license information
+cargo license
 ```
 
 ## Cargo.toml Configuration
 
-### Basic Package Configuration
+### Basic Project Configuration
 ```toml
 [package]
-name = "my-project"
+name = "my-app"
 version = "0.1.0"
 edition = "2021"
-authors = ["Your Name <you@example.com>"]
+authors = ["Your Name <your.email@example.com>"]
 license = "MIT OR Apache-2.0"
-description = "A brief description of the project"
-documentation = "https://docs.rs/my-project"
-homepage = "https://github.com/username/my-project"
-repository = "https://github.com/username/my-project"
+description = "A fantastic Rust application"
+homepage = "https://github.com/username/my-app"
+repository = "https://github.com/username/my-app"
+documentation = "https://docs.rs/my-app"
 readme = "README.md"
-keywords = ["web", "async", "server"]
-categories = ["web-programming"]
-rust-version = "1.70"
+keywords = ["cli", "tool", "rust"]
+categories = ["command-line-utilities"]
+include = [
+    "src/**/*",
+    "Cargo.toml",
+    "README.md",
+    "LICENSE*"
+]
+exclude = [
+    "tests/*",
+    "examples/*",
+    "benches/*"
+]
+```
 
+### Dependency Specifications
+```toml
 [dependencies]
+# Basic dependency
+serde = "1.0"
+
+# Dependency with features
 serde = { version = "1.0", features = ["derive"] }
-tokio = { version = "1.0", features = ["full"] }
-clap = { version = "4.0", features = ["derive"] }
+
+# Optional dependency
+redis = { version = "0.21", optional = true }
+
+# Git dependency
+my-lib = { git = "https://github.com/username/my-lib" }
+
+# Git dependency with specific branch/tag
+my-lib = { git = "https://github.com/username/my-lib", branch = "main" }
+my-lib = { git = "https://github.com/username/my-lib", tag = "v1.0.0" }
+
+# Path dependency
+my-local-lib = { path = "../my-local-lib" }
+
+# Platform-specific dependencies
+[target.'cfg(windows)'.dependencies]
+winapi = "0.3"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
 
 [dev-dependencies]
 tokio-test = "0.4"
-criterion = "0.5"
 proptest = "1.0"
+criterion = "0.5"
 
 [build-dependencies]
 cc = "1.0"
+```
 
-# Optional dependencies
-[dependencies]
-redis = { version = "0.23", optional = true }
-postgres = { version = "0.19", optional = true }
-
+### Feature Configuration
+```toml
 [features]
-default = ["redis"]
-database = ["postgres"]
-cache = ["redis"]
-full = ["database", "cache"]
+default = ["std"]
+std = []
+async = ["tokio", "futures"]
+redis-backend = ["redis"]
+full = ["async", "redis-backend"]
+
+# Feature with dependencies
+database = ["sqlx", "uuid"]
 ```
 
-### Multiple Binaries
+### Build Configuration
 ```toml
-# Default binary (src/main.rs)
-[[bin]]
-name = "my-app"
-path = "src/main.rs"
+[profile.dev]
+opt-level = 0
+debug = true
+overflow-checks = true
 
-# Additional binaries
-[[bin]]
-name = "cli-tool"
-path = "src/bin/cli.rs"
+[profile.release]
+opt-level = 3
+debug = false
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
 
-[[bin]]
-name = "server"
-path = "src/bin/server.rs"
+[profile.test]
+opt-level = 1
+debug = true
 
-# Examples
-[[example]]
-name = "basic"
-path = "examples/basic.rs"
-
-# Benchmarks
-[[bench]]
-name = "performance"
-harness = false
-
-# Integration tests
-[[test]]
-name = "integration"
-path = "tests/integration_test.rs"
-```
-
-### Workspace Configuration
-```toml
-# Workspace root Cargo.toml
-[workspace]
-members = [
-    "app",
-    "lib",
-    "cli",
-    "server",
-    "shared"
-]
-
-exclude = [
-    "target",
-    "old-projects/*"
-]
-
-# Workspace-wide dependencies
-[workspace.dependencies]
-serde = { version = "1.0", features = ["derive"] }
-tokio = { version = "1.0", features = ["full"] }
-anyhow = "1.0"
-
-# Workspace-wide package info
-[workspace.package]
-authors = ["Your Name <you@example.com>"]
-license = "MIT OR Apache-2.0"
-edition = "2021"
-rust-version = "1.70"
-
-# Workspace-wide lints
-[workspace.lints.rust]
-unsafe_code = "forbid"
-
-[workspace.lints.clippy]
-all = "warn"
-pedantic = "warn"
-```
-
-### Member Crate Configuration
-```toml
-# Member crate Cargo.toml
-[package]
-name = "my-lib"
-version.workspace = true
-authors.workspace = true
-license.workspace = true
-edition.workspace = true
-
-[dependencies]
-# Use workspace dependencies
-serde.workspace = true
-tokio = { workspace = true, features = ["rt"] }
-
-# Local dependencies
-shared = { path = "../shared" }
-
-[lints]
-workspace = true
-```
-
-## Advanced Cargo Features
-
-### Custom Commands
-```bash
-# Install cargo extensions
-cargo install cargo-edit      # cargo add, cargo rm
-cargo install cargo-watch     # cargo watch
-cargo install cargo-expand    # cargo expand
-cargo install cargo-flamegraph # cargo flamegraph
-cargo install cargo-audit     # cargo audit
-cargo install cargo-deny      # cargo deny
-cargo install cargo-outdated  # cargo outdated
-
-# Use custom commands
-cargo watch -x check          # Watch and check on changes
-cargo expand                  # Expand macros
-cargo flamegraph             # Profile with flamegraph
-```
-
-### Publishing to crates.io
-```bash
-# Login to crates.io
-cargo login
-
-# Package for distribution
-cargo package
-
-# Publish to crates.io
-cargo publish
-
-# Publish dry run
-cargo publish --dry-run
-
-# Yank a published version
-cargo yank --version 0.1.0
-
-# Un-yank a version
-cargo yank --version 0.1.0 --undo
-```
-
-### Version Management
-```bash
-# Set version
-cargo set-version 1.0.0
-
-# Bump version
-cargo set-version --bump major
-cargo set-version --bump minor
-cargo set-version --bump patch
-
-# Pre-release versions
-cargo set-version 1.0.0-alpha.1
-cargo set-version 1.0.0-beta.1
-cargo set-version 1.0.0-rc.1
+[profile.bench]
+opt-level = 3
+debug = true
 ```
 
 ## Workspace Management
 
-### Multi-Crate Project Structure
-```
-my-workspace/
-├── Cargo.toml          # Workspace root
-├── Cargo.lock          # Workspace lockfile
-├── app/                # Main application
-│   ├── Cargo.toml
-│   └── src/
-├── lib/                # Core library
-│   ├── Cargo.toml
-│   └── src/
-├── cli/                # CLI tool
-│   ├── Cargo.toml
-│   └── src/
-├── server/             # Web server
-│   ├── Cargo.toml
-│   └── src/
-└── shared/             # Shared utilities
-    ├── Cargo.toml
-    └── src/
+### Workspace Configuration
+```toml
+# Workspace Cargo.toml
+[workspace]
+members = [
+    "my-lib",
+    "my-app",
+    "my-tools/*"
+]
+
+exclude = [
+    "old-project"
+]
+
+resolver = "2"
+
+[workspace.dependencies]
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.0", features = ["full"] }
+
+[workspace.metadata.docs.rs]
+all-features = true
 ```
 
 ### Workspace Commands
@@ -345,212 +224,364 @@ cargo build --workspace
 # Test all workspace members
 cargo test --workspace
 
-# Build specific member
-cargo build -p app
+# Run specific workspace member
+cargo run --bin my-app
 
-# Run binary from specific member
-cargo run -p cli
+# Check all workspace members
+cargo check --workspace
 
-# Add dependency to specific member
-cargo add serde -p lib
-
-# Check specific member
-cargo check -p server
+# Clean all workspace members
+cargo clean --workspace
 ```
 
-## Scripts and Automation
+## Publishing
 
-### Cargo.toml Scripts (using cargo-make)
-```toml
-# Install: cargo install cargo-make
-
-[tasks.dev]
-description = "Development build and run"
-command = "cargo"
-args = ["run"]
-dependencies = ["build"]
-
-[tasks.test-all]
-description = "Run all tests"
-command = "cargo"
-args = ["test", "--workspace"]
-
-[tasks.lint]
-description = "Run linting"
-script = [
-    "cargo fmt --all -- --check",
-    "cargo clippy --workspace -- -D warnings"
-]
-
-[tasks.release-build]
-description = "Build optimized release"
-command = "cargo"
-args = ["build", "--release", "--workspace"]
-
-[tasks.publish-all]
-description = "Publish all crates"
-script = [
-    "cargo publish -p shared",
-    "cargo publish -p lib", 
-    "cargo publish -p cli",
-    "cargo publish -p app"
-]
-```
-
-### Custom Build Scripts
+### Preparing for Publishing
 ```bash
-#!/bin/bash
-# build-all.sh
-set -e
-
-echo "Building workspace..."
-
-# Clean previous builds
-cargo clean
-
-# Build all members
-cargo build --workspace --release
+# Check package before publishing
+cargo check
 
 # Run tests
-cargo test --workspace
+cargo test
 
-# Create distribution
-mkdir -p dist
-cp target/release/app dist/
-cp target/release/cli dist/
-cp target/release/server dist/
+# Check documentation
+cargo doc
 
-echo "Build complete! Binaries in dist/"
+# Package the crate
+cargo package
+
+# List package contents
+cargo package --list
+
+# Verify package
+cargo package --verify
 ```
 
-## Configuration and Profiles
+### Publishing to crates.io
+```bash
+# Login to crates.io
+cargo login
 
-### Custom Profiles
-```toml
-# Custom profiles in Cargo.toml
-[profile.dev-opt]
-inherits = "dev"
-opt-level = 1
+# Publish to crates.io
+cargo publish
 
-[profile.release-debug]
-inherits = "release"
-debug = true
+# Publish with specific registry
+cargo publish --registry my-registry
 
-[profile.tiny]
-inherits = "release"
-opt-level = "z"
-lto = true
-codegen-units = 1
-panic = "abort"
+# Dry run publish
+cargo publish --dry-run
 ```
 
-### Build Configuration
+### Registry Configuration
 ```toml
-# Build configuration
+# .cargo/config.toml
+[registries]
+my-registry = { index = "https://my-registry.com/index" }
+
+[registry]
+default = "my-registry"
+```
+
+## Advanced Features
+
+### Custom Commands
+```bash
+# Install custom commands
+cargo install cargo-expand
+cargo install cargo-edit
+cargo install cargo-outdated
+cargo install cargo-audit
+
+# Use custom commands
+cargo expand
+cargo edit
+cargo outdated
+cargo audit
+```
+
+### Cargo Scripts
+```toml
+# Cargo.toml
+[package.metadata.scripts]
+test-all = "cargo test && cargo test --doc"
+lint = "cargo clippy -- -D warnings"
+fmt-check = "cargo fmt --all -- --check"
+```
+
+### Build Scripts
+```rust
+// build.rs
+use std::env;
+use std::fs;
+use std::path::Path;
+
+fn main() {
+    // Get output directory
+    let out_dir = env::var("OUT_DIR").unwrap();
+    let dest_path = Path::new(&out_dir).join("hello.rs");
+    
+    // Generate code
+    fs::write(
+        &dest_path,
+        "pub fn message() -> &'static str { \"Hello, World!\" }"
+    ).unwrap();
+    
+    // Tell Cargo to rerun if build.rs changes
+    println!("cargo:rerun-if-changed=build.rs");
+    
+    // Tell Cargo to rerun if src/template.rs changes
+    println!("cargo:rerun-if-changed=src/template.rs");
+    
+    // Link to system library
+    println!("cargo:rustc-link-lib=ssl");
+    
+    // Set environment variable
+    println!("cargo:rustc-env=BUILT_TIME={}", chrono::Utc::now().format("%Y-%m-%d %H:%M:%S"));
+}
+```
+
+## Configuration Files
+
+### Global Configuration
+```toml
+# ~/.cargo/config.toml
 [build]
 target = "x86_64-unknown-linux-gnu"
-target-dir = "target"
-rustc = "rustc"
-rustdoc = "rustdoc"
-jobs = 4
+rustflags = ["-C", "target-cpu=native"]
 
 [target.x86_64-unknown-linux-gnu]
 linker = "clang"
 rustflags = ["-C", "link-arg=-fuse-ld=lld"]
 
-[env]
-DATABASE_URL = "postgres://localhost/mydb"
-```
-
-### Cargo Config (.cargo/config.toml)
-```toml
-# .cargo/config.toml
-[alias]
-b = "build"
-t = "test"
-r = "run"
-c = "check"
-fmt-check = "fmt -- --check"
-clippy-strict = "clippy -- -D warnings -W clippy::pedantic"
-
-[build]
-rustc-wrapper = "sccache"  # Use sccache for caching
-
-[target.x86_64-unknown-linux-gnu]
-linker = "clang"
-rustflags = ["-C", "link-arg=-fuse-ld=mold"]
-
-[registries.my-registry]
-index = "https://my-intranet:8080/git/index"
+[registry]
+index = "https://github.com/rust-lang/crates.io-index"
 
 [net]
 retry = 2
 git-fetch-with-cli = true
+
+[profile.release]
+lto = true
+codegen-units = 1
+```
+
+### Local Configuration
+```toml
+# .cargo/config.toml (project-specific)
+[alias]
+b = "build"
+c = "check"
+r = "run"
+t = "test"
+
+[env]
+RUST_LOG = "debug"
+DATABASE_URL = "postgres://localhost/mydb"
+```
+
+## Cargo Extensions
+
+### Useful Cargo Extensions
+```bash
+# Code quality
+cargo install cargo-clippy
+cargo install cargo-fmt
+
+# Documentation
+cargo install cargo-doc
+
+# Testing
+cargo install cargo-tarpaulin  # Coverage
+cargo install cargo-nextest    # Better test runner
+
+# Performance
+cargo install cargo-flamegraph
+cargo install cargo-profiler
+
+# Security
+cargo install cargo-audit
+cargo install cargo-deny
+
+# Dependency management
+cargo install cargo-edit
+cargo install cargo-outdated
+cargo install cargo-tree
+cargo install cargo-license
+
+# Build tools
+cargo install cargo-watch
+cargo install cargo-expand
+cargo install cargo-bloat
+```
+
+### Using Extensions
+```bash
+# Watch for changes and rebuild
+cargo watch -x run
+
+# Expand macros
+cargo expand
+
+# Check for security vulnerabilities
+cargo audit
+
+# Analyze binary size
+cargo bloat --release
+
+# Generate flamegraph
+cargo flamegraph --bin my-app
+
+# Better test runner
+cargo nextest run
+
+# Generate license report
+cargo license
 ```
 
 ## Troubleshooting
 
-### Common Issues and Solutions
+### Common Issues
 ```bash
 # Clear cargo cache
 cargo clean
 
-# Update cargo itself
-rustup update
+# Update cargo index
+cargo update
 
-# Fix corrupted lockfile
-rm Cargo.lock
-cargo generate-lockfile
+# Fix dependency issues
+cargo update -p problematic-crate
 
-# Check for dependency conflicts
+# Check for conflicting dependencies
 cargo tree --duplicates
 
-# Verify all dependencies
+# Verify package integrity
 cargo verify-project
 
-# Fix path dependencies
-cargo metadata --format-version 1
+# Show cargo version
+cargo --version
 ```
 
-### Dependency Resolution
+### Debug Information
 ```bash
-# Force update specific dependency
-cargo update -p serde --precise 1.0.136
+# Verbose output
+cargo build --verbose
 
-# Use alternative registry
-cargo install --registry my-registry my-crate
+# Show cargo configuration
+cargo config list
 
-# Override dependency source
-[patch.crates-io]
-serde = { git = "https://github.com/serde-rs/serde" }
+# Show build timings
+cargo build --timings
+
+# Show dependency resolution
+cargo tree --verbose
 ```
 
-### Performance Optimization
-```bash
-# Use parallel compilation
-export CARGO_BUILD_JOBS=8
+## CI/CD Integration
 
-# Use faster linker
-export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
+### GitHub Actions
+```yaml
+name: CI
+on: [push, pull_request]
 
-# Enable incremental compilation
-export CARGO_INCREMENTAL=1
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+    
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+    
+    - name: Build
+      run: cargo build --verbose
+    
+    - name: Test
+      run: cargo test --verbose
+    
+    - name: Clippy
+      run: cargo clippy -- -D warnings
+    
+    - name: Format check
+      run: cargo fmt --all -- --check
+```
 
-# Use sccache for shared compilation cache
-export RUSTC_WRAPPER=sccache
+### GitLab CI
+```yaml
+stages:
+  - build
+  - test
+  - publish
+
+variables:
+  CARGO_HOME: $CI_PROJECT_DIR/.cargo
+
+cache:
+  paths:
+    - target/
+    - .cargo/
+
+build:
+  stage: build
+  script:
+    - cargo build --release
+  artifacts:
+    paths:
+      - target/release/my-app
+
+test:
+  stage: test
+  script:
+    - cargo test --verbose
+    - cargo clippy -- -D warnings
+    - cargo fmt --all -- --check
+
+publish:
+  stage: publish
+  script:
+    - cargo publish --dry-run
+    - cargo publish
+  only:
+    - tags
 ```
 
 ## Best Practices
 
-- Use semantic versioning for your crates
-- Keep dependencies up to date but test changes
-- Use workspace for related crates
-- Specify minimum supported Rust version (MSRV)
-- Document all public APIs
+### Project Structure
+- Use semantic versioning for releases
+- Maintain comprehensive documentation
+- Include examples and integration tests
 - Use feature flags for optional functionality
-- Test on multiple Rust versions in CI
-- Use `cargo audit` for security checks
+
+### Dependency Management
 - Pin dependency versions in applications
-- Use ranges for library dependencies
-- Keep build times reasonable with selective features
-- Use local path dependencies during development
+- Use version ranges in libraries
+- Regularly update dependencies
+- Audit dependencies for security issues
+
+### Performance
+- Use release builds for production
+- Enable LTO for final binaries
+- Monitor binary size with cargo-bloat
+- Profile critical code paths
+
+### Publishing
+- Test thoroughly before publishing
+- Use cargo package to verify contents
+- Maintain changelog and documentation
+- Follow Rust API guidelines
+
+### Development Workflow
+- Use cargo-watch for development
+- Set up proper CI/CD pipelines
+- Use pre-commit hooks for quality
+- Maintain consistent coding standards
