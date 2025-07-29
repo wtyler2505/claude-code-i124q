@@ -7,7 +7,7 @@
 
 const path = require('path');
 const chalk = require('chalk');
-const { AIAgentManager } = require('../src/ai-agents');
+const { AIAgentManager } = require('./index');
 
 async function runDemo() {
   console.log(chalk.magenta('🤖 AI Agent Ecosystem Demo'));
