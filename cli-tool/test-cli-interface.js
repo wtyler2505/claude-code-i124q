@@ -31,11 +31,19 @@ async function testCLIInterface() {
         name: 'Test Server 1',
         category: 'filesystem',
         priority: 'high',
+        complexity: 3,
         isInstalled: true,
+        isConfigured: false,
+        isRunning: false,
         healthScore: 85,
+        healthStatus: 'good',
+        issues: [],
+        recommendations: [],
+        capabilities: { tools: [], resources: [] },
         originalInfo: {
           description: 'Test filesystem server',
-          installCommand: 'npm install -g test-server-1'
+          installCommand: 'npm install -g test-server-1',
+          command: 'test-server-1'
         }
       },
       {
@@ -43,11 +51,19 @@ async function testCLIInterface() {
         name: 'Test Server 2',
         category: 'database',
         priority: 'medium',
+        complexity: 2,
         isInstalled: false,
+        isConfigured: false,
+        isRunning: false,
         healthScore: 0,
+        healthStatus: 'unknown',
+        issues: [],
+        recommendations: [],
+        capabilities: { tools: [], resources: [] },
         originalInfo: {
           description: 'Test database server',
-          installCommand: 'npm install -g test-server-2'
+          installCommand: 'npm install -g test-server-2',
+          command: 'test-server-2'
         }
       }
     ];
