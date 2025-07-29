@@ -170,7 +170,7 @@ ${additionalContext.context ? `Context: ${additionalContext.context}\n` : ''}Hum
     return {
       agentType: this.agentType,
       sessionId: this.sessionId,
-      initialized: !!this.session,
+      initialized: this.initialized,
       conversationCount: this.conversationHistory.length,
       lastActivity: this.conversationHistory.length > 0 
         ? this.conversationHistory[this.conversationHistory.length - 1].timestamp 
@@ -182,12 +182,8 @@ ${additionalContext.context ? `Context: ${additionalContext.context}\n` : ''}Hum
    * Cleanup agent resources
    */
   async cleanup() {
-    if (this.session) {
-      // Note: Claude Code SDK may not have explicit cleanup methods
-      // This is a placeholder for any necessary cleanup
-      this.session = null;
-    }
-    this.client = null;
+    // No explicit cleanup needed for query-based approach
+    this.initialized = false;
     console.log(chalk.gray(`🧹 ${this.agentType} Agent cleaned up`));
   }
 }
