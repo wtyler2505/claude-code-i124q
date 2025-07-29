@@ -103,19 +103,65 @@ const TEMPLATES_CONFIG = {
   },
   'rust': {
     name: 'Rust',
-    description: 'Optimized for Rust development',
-    comingSoon: true,
+    description: 'Optimized for Rust development with comprehensive tooling support',
     files: [
+      { source: 'rust/CLAUDE.md', destination: 'CLAUDE.md' },
+      { source: 'rust/.claude', destination: '.claude' },
+      { source: 'rust/.claude/settings.json', destination: '.claude/settings.json' },
       { source: 'rust/.mcp.json', destination: '.mcp.json' }
-    ]
+    ],
+    frameworks: {
+      'axum': {
+        name: 'Axum Web Framework',
+        additionalFiles: [
+          { source: 'rust/.claude/commands/axum.md', destination: '.claude/commands/axum.md' }
+        ]
+      },
+      'warp': {
+        name: 'Warp Web Framework',
+        additionalFiles: [
+          { source: 'rust/.claude/commands/warp.md', destination: '.claude/commands/warp.md' }
+        ]
+      },
+      'actix': {
+        name: 'Actix-web Framework',
+        additionalFiles: [
+          { source: 'rust/.claude/commands/actix.md', destination: '.claude/commands/actix.md' }
+        ]
+      },
+      'tokio': {
+        name: 'Tokio Async Runtime',
+        additionalFiles: [
+          { source: 'rust/.claude/commands/tokio.md', destination: '.claude/commands/tokio.md' }
+        ]
+      }
+    }
   },
   'go': {
     name: 'Go',
-    description: 'Optimized for Go development', 
-    comingSoon: true,
+    description: 'Optimized for Go development with modern tooling support',
     files: [
+      { source: 'go/CLAUDE.md', destination: 'CLAUDE.md' },
+      { source: 'go/.claude', destination: '.claude' },
+      { source: 'go/.claude/settings.json', destination: '.claude/settings.json' },
       { source: 'go/.mcp.json', destination: '.mcp.json' }
-    ]
+    ],
+    frameworks: {
+      'gin': {
+        name: 'Gin Web Framework',
+        additionalFiles: [
+          { source: 'go/.claude/commands/gin.md', destination: '.claude/commands/gin.md' }
+        ]
+      },
+      'echo': {
+        name: 'Echo Web Framework',
+        additionalFiles: []
+      },
+      'fiber': {
+        name: 'Fiber Web Framework',
+        additionalFiles: []
+      }
+    }
   }
 };
 
