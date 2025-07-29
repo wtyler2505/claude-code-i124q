@@ -54,6 +54,11 @@ program
   .option('--analytics', 'launch real-time Claude Code analytics dashboard')
   .option('--chats, --agents', 'launch Claude Code chats/agents dashboard (opens directly to conversations)')
   .option('--health-check, --health, --check, --verify', 'run comprehensive health check to verify Claude Code setup')
+  .option('--ai-agents, --agents-ai', 'launch AI Agent ecosystem for code review, optimization, and documentation')
+  .option('--agent-review', 'run AI-powered code review analysis')
+  .option('--agent-optimize', 'run AI-powered performance optimization analysis')  
+  .option('--agent-docs', 'run AI-powered documentation generation')
+  .option('--agent-comprehensive', 'run comprehensive AI analysis with all agents')
   .action(async (options) => {
     try {
       await createClaudeConfig(options);
