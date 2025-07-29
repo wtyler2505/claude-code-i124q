@@ -611,6 +611,8 @@ class MCPDiscoveryTester {
       
       // Test 1: Demo script exists
       await this.runTest('demo', 'Demo Script Exists', async () => {
+        const demoPath = path.join(this.testProjectPath, 'mcp-discovery-demo.js');
+        
         if (!(await fs.pathExists(demoPath))) {
           throw new Error('Demo script should exist');
         }
@@ -620,6 +622,7 @@ class MCPDiscoveryTester {
 
       // Test 2: Demo script structure
       await this.runTest('demo', 'Demo Script Structure', async () => {
+        const demoPath = path.join(this.testProjectPath, 'mcp-discovery-demo.js');
         const demoContent = await fs.readFile(demoPath, 'utf8');
         
         if (!demoContent.includes('runMCPDiscoveryDemo')) {
@@ -637,6 +640,7 @@ class MCPDiscoveryTester {
       await this.runTest('demo', 'Demo Script Syntax Check', async () => {
         try {
           // Try to require the demo script to check for syntax errors
+          const demoPath = path.join(this.testProjectPath, 'mcp-discovery-demo.js');
           const demoModule = require(demoPath);
           
           if (typeof demoModule.runMCPDiscoveryDemo !== 'function') {
