@@ -1,39 +1,74 @@
 {
   "mcpServers": {
-    "rust-sdk": {
-      "name": "Rust MCP SDK",
-      "description": "Asynchronous, high-performance SDK for Rust",
-      "command": "rust_mcp_server",
+    "rust-analyzer": {
+      "name": "Rust Analyzer MCP",
+      "description": "Language server integration for Rust development with semantic analysis",
+      "command": "rust-analyzer-mcp",
       "args": [],
       "env": {}
     },
-    "ht-mcp": {
-      "name": "HT MCP",
-      "description": "Pure Rust implementation for headless terminal interaction",
-      "command": "ht-mcp",
+    "cargo-mcp": {
+      "name": "Cargo MCP Server", 
+      "description": "Integration with Cargo package manager and build system",
+      "command": "cargo-mcp-server",
       "args": [],
       "env": {}
     },
-    "rust-docs": {
-      "name": "Rust Docs MCP",
-      "description": "Prevents outdated code suggestions by providing updated Rust docs",
-      "command": "rust-docs-mcp-server",
+    "crates-io": {
+      "name": "Crates.io MCP",
+      "description": "Search and manage Rust crates from crates.io registry",
+      "command": "crates-io-mcp",
       "args": [],
       "env": {}
     },
-    "substrate": {
-      "name": "Substrate MCP",
-      "description": "MCP server for interacting with Substrate-based blockchains",
-      "command": "substrate-mcp-rs",
+    "rustdoc": {
+      "name": "Rustdoc MCP",
+      "description": "Generate and serve Rust documentation",
+      "command": "rustdoc-mcp",
+      "args": [],
+      "env": {}
+    },
+    "tokio-console": {
+      "name": "Tokio Console MCP",
+      "description": "Debug and monitor async Rust applications using Tokio Console",
+      "command": "tokio-console-mcp",
+      "args": [],
+      "env": {}
+    },
+    "diesel-cli": {
+      "name": "Diesel CLI MCP",
+      "description": "Database ORM operations for Rust applications",
+      "command": "diesel-mcp",
       "args": [],
       "env": {
-        "NODE_URL": "..."
+        "DATABASE_URL": "postgres://localhost/mydb"
       }
     },
-    "mcp-proxy": {
-      "name": "MCP Proxy",
-      "description": "Fast Rust-based proxy between stdio and SSE",
-      "command": "mcp-proxy",
+    "sea-orm": {
+      "name": "SeaORM MCP",
+      "description": "Async ORM for Rust with comprehensive database support",
+      "command": "sea-orm-mcp", 
+      "args": [],
+      "env": {}
+    },
+    "axum-mcp": {
+      "name": "Axum Framework MCP",
+      "description": "Web framework tooling for Axum applications",
+      "command": "axum-mcp-server",
+      "args": [],
+      "env": {}
+    },
+    "warp-mcp": {
+      "name": "Warp Framework MCP", 
+      "description": "Filter-based web framework tooling for Warp applications",
+      "command": "warp-mcp-server",
+      "args": [],
+      "env": {}
+    },
+    "actix-web": {
+      "name": "Actix-web MCP",
+      "description": "Actor-based web framework tooling for Actix applications", 
+      "command": "actix-mcp-server",
       "args": [],
       "env": {}
     },
@@ -54,7 +89,7 @@
     "brave-search": {
       "name": "Brave Search MCP",
       "description": "Privacy-focused web search tool",
-      "command": "server-brave-search",
+      "command": "server-brave-search", 
       "args": [],
       "env": {}
     },
@@ -69,8 +104,8 @@
     },
     "deep-graph": {
       "name": "Deep Graph MCP (Code Graph)",
-      "description": "Transforms source code into semantic graphs via DeepGraph",
-      "command": "mcp-code-graph",
+      "description": "Transforms Rust source code into semantic graphs via DeepGraph",
+      "command": "mcp-code-graph-rust",
       "args": [],
       "env": {}
     }
