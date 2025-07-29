@@ -52,7 +52,9 @@ class ClaudeAgent {
       let response = '';
       
       // Use the async iterator pattern from Claude Code SDK
-      for await (const message of query(prompt)) {
+      const stream = query(prompt);
+      
+      for await (const message of stream) {
         if (message.type === 'text') {
           response += message.text;
         } else if (message.type === 'result' && message.subtype === 'error_during_execution') {
@@ -64,10 +66,13 @@ class ClaudeAgent {
     } catch (error) {
       // Fallback for demo/testing when Claude Code is not available
       if (error.message.includes('Cannot read properties') || 
+          error.message.includes('undefined') ||
           error.message.includes('authentication') || 
-          error.message.includes('login')) {
+          error.message.includes('login') ||
+          error.name === 'TypeError') {
         
         // Return a demo response for testing purposes
+        console.log(chalk.yellow(`⚠️  Claude Code not available, using demo response for ${this.agentType}`));
         return this.generateDemoResponse(prompt);
       }
       throw error;
