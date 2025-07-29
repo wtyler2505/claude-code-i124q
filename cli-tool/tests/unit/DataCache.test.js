@@ -21,6 +21,13 @@ describe('DataCache', () => {
     jest.clearAllMocks();
   });
 
+  afterEach(() => {
+    // Clean up intervals to prevent memory leaks
+    if (dataCache && dataCache.destroy) {
+      dataCache.destroy();
+    }
+  });
+
   describe('constructor', () => {
     it('should initialize with default configuration', () => {
       expect(dataCache.caches.fileContent).toBeInstanceOf(Map);
