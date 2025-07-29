@@ -60,6 +60,7 @@
   "author": "Claude Code Templates",
   "license": "MIT",
   "dependencies": {
+    "@anthropic-ai/claude-code": "^1.0.62",
     "boxen": "^5.1.2",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
