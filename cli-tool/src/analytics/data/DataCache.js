@@ -6,16 +6,32 @@ const chalk = require('chalk');
  * Provides file content, parsed data, and computation result caching with smart invalidation
  */
 class DataCache {
-  constructor() {
+  constructor(options = {}) {
+    // Merge default options with provided options
+    this.options = {
+      fileContentTTL: 30000, // 30 seconds for file content
+      parsedDataTTL: 15000, // 15 seconds for parsed data
+      computationTTL: 10000, // 10 seconds for expensive computations
+      metadataTTL: 5000, // 5 seconds for metadata
+      processTTL: 500, // 500ms for process data
+      maxCacheSize: 25, // Max cache entries
+      maxFileSize: 5000000, // 5MB max file size
+      ...options
+    };
+
     // Multi-level caching strategy
     this.caches = {
       // File content cache (highest impact)
       fileContent: new Map(), // filepath -> { content, timestamp, stats }
       
-      // Parsed data cache
-      parsedConversations: new Map(), // filepath -> { messages, timestamp }
+      // Parsed data cache (simplified structure to match tests)
+      parsedData: new Map(), // filepath -> { messages, timestamp }
       
-      // Computed results cache  
+      // Computation results cache (simplified structure to match tests)
+      computationResults: new Map(), // filepath -> { result, timestamp }
+      
+      // Legacy specific caches for backward compatibility
+      parsedConversations: new Map(), // filepath -> { messages, timestamp }
       tokenUsage: new Map(), // filepath -> { usage, timestamp }
       modelInfo: new Map(), // filepath -> { info, timestamp }
       statusSquares: new Map(), // filepath -> { squares, timestamp }
@@ -26,21 +42,21 @@ class DataCache {
       summary: { data: null, timestamp: 0, dependencies: new Set() },
       
       // Process cache enhancement
-      processes: { data: null, timestamp: 0, ttl: 500 },
+      processes: { data: null, timestamp: 0, ttl: this.options.processTTL },
       
       // Metadata cache
       fileStats: new Map(), // filepath -> { stats, timestamp }
       projectStats: new Map(), // projectPath -> { data, timestamp }
     };
     
-    // Cache configuration (reduced TTL for aggressive memory management)
+    // Cache configuration (use options for TTL values)
     this.config = {
-      fileContentTTL: 30000, // 30 seconds for file content (reduced from 60s)
-      parsedDataTTL: 15000, // 15 seconds for parsed data (reduced from 30s)
-      computationTTL: 10000, // 10 seconds for expensive computations (reduced from 20s)
-      metadataTTL: 5000, // 5 seconds for metadata (reduced from 10s)
-      processTTL: 500, // 500ms for process data
-      maxCacheSize: 25, // Aggressively reduced to 25 to prevent memory buildup
+      fileContentTTL: this.options.fileContentTTL,
+      parsedDataTTL: this.options.parsedDataTTL,
+      computationTTL: this.options.computationTTL,
+      metadataTTL: this.options.metadataTTL,
+      processTTL: this.options.processTTL,
+      maxCacheSize: this.options.maxCacheSize,
     };
     
     // Dependency tracking for smart invalidation
