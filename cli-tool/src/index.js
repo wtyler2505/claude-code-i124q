@@ -53,6 +53,11 @@ async function showMainMenu() {
     default: 'analytics'
   }]);
   
+  if (initialChoice.action === 'ai-agents') {
+    console.log(chalk.magenta('🤖 Launching AI Agent Ecosystem...'));
+    return await runAIAgents({});
+  }
+  
   if (initialChoice.action === 'analytics') {
     console.log(chalk.blue('📊 Launching Claude Code Analytics Dashboard...'));
     await runAnalytics({});
