@@ -1,10 +1,10 @@
-# Rust Build System
+# Rust Build
 
-Build Rust projects with cargo, including optimization, cross-compilation, and release builds.
+Build your Rust application with optimization, cross-compilation, and feature management.
 
 ## Purpose
 
-This command helps you build Rust projects efficiently using cargo with proper optimization flags, target specifications, and build configurations.
+This command helps you build Rust applications efficiently with proper optimization flags, cross-platform support, and feature selection.
 
 ## Usage
 
@@ -14,436 +14,338 @@ This command helps you build Rust projects efficiently using cargo with proper o
 
 ## What this command does
 
-1. **Compiles Rust code** with cargo build system  
-2. **Applies optimizations** for development and release builds
-3. **Handles cross-compilation** for different platforms
-4. **Manages build profiles** and custom configurations
+1. **Compiles Rust code** with optimization and feature flags
+2. **Cross-compiles** for different platforms and architectures
+3. **Manages features** and conditional compilation
+4. **Generates optimized binaries** for production deployment
 
 ## Example Commands
 
-### Basic Building
+### Basic Build
 ```bash
-# Build in debug mode (default)
+# Build for current platform
 cargo build
 
-# Build in release mode (optimized)
+# Build with release optimizations
 cargo build --release
-
-# Build all targets (binaries, examples, tests)
-cargo build --all-targets
 
 # Build specific binary
 cargo build --bin my-app
 
-# Build examples
-cargo build --examples
+# Build all binaries
+cargo build --bins
+
+# Build with verbose output
+cargo build --verbose
+```
+
+### Feature Management
+```bash
+# Build with specific features
+cargo build --features "feature1,feature2"
+
+# Build with all features
+cargo build --all-features
+
+# Build with no default features
+cargo build --no-default-features
+
+# Build with specific feature combination
+cargo build --no-default-features --features "serde,async"
 ```
 
 ### Cross-Compilation
 ```bash
-# List available targets
-rustup target list
+# Install target first
+rustup target add x86_64-unknown-linux-gnu
 
-# Add target for cross-compilation
+# Cross-compile for Linux
+cargo build --target x86_64-unknown-linux-gnu --release
+
+# Cross-compile for Windows
 rustup target add x86_64-pc-windows-gnu
-rustup target add aarch64-unknown-linux-gnu
+cargo build --target x86_64-pc-windows-gnu --release
+
+# Cross-compile for macOS
 rustup target add x86_64-apple-darwin
+cargo build --target x86_64-apple-darwin --release
 
-# Build for specific target
-cargo build --target x86_64-pc-windows-gnu
+# Cross-compile for ARM64
+rustup target add aarch64-unknown-linux-gnu
 cargo build --target aarch64-unknown-linux-gnu --release
-
-# Build for multiple targets
-cargo build --target x86_64-unknown-linux-gnu --target x86_64-pc-windows-gnu
 ```
 
-### Advanced Build Options
-```bash
-# Build with specific profile
-cargo build --profile dev
-cargo build --profile release
-
-# Build with feature flags
-cargo build --features "feature1,feature2"
-cargo build --all-features
-cargo build --no-default-features
-
-# Verbose build output
-cargo build --verbose
-
-# Build with specific number of parallel jobs
-cargo build --jobs 4
-
-# Build and run
-cargo run
-cargo run --release
-cargo run --bin my-binary -- --arg1 value1
-```
-
-## Build Profiles
-
-### Cargo.toml Configuration
-```toml
-[package]
-name = "my-project"
-version = "0.1.0"
-edition = "2021"
-
-# Development profile (cargo build)
-[profile.dev]
-opt-level = 0        # No optimizations
-debug = true         # Include debug info
-split-debuginfo = '...' # Platform-specific debug info handling
-strip = false        # Don't strip symbols
-debug-assertions = true
-overflow-checks = true
-lto = false         # No link-time optimization
-panic = 'unwind'    # Panic strategy
-incremental = true  # Incremental compilation
-codegen-units = 256 # Number of codegen units
-
-# Release profile (cargo build --release)
-[profile.release]
-opt-level = 3       # Maximum optimizations
-debug = false       # No debug info
-strip = true        # Strip symbols
-debug-assertions = false
-overflow-checks = false
-lto = true         # Link-time optimization
-panic = 'abort'    # Abort on panic
-incremental = false
-codegen-units = 1  # Single codegen unit for better optimization
-
-# Custom profile for production
-[profile.production]
-inherits = "release"
-opt-level = 3
-lto = "fat"        # Full LTO
-codegen-units = 1
-panic = "abort"
-strip = "symbols"
-
-# Profile for development with some optimizations
-[profile.dev-optimized]
-inherits = "dev"
-opt-level = 1
-debug = true
-```
-
-### Using Custom Profiles
-```bash
-# Build with custom profile
-cargo build --profile production
-
-# Run with custom profile  
-cargo run --profile dev-optimized
-```
-
-## Build Scripts
-
-### Build Script (build.rs)
-```rust
-// build.rs - runs before compilation
-use std::env;
-use std::fs;
-use std::path::Path;
-
-fn main() {
-    // Re-run this build script if build.rs changes
-    println!("cargo:rerun-if-changed=build.rs");
-    
-    // Re-run if source files change
-    println!("cargo:rerun-if-changed=src/");
-    
-    // Set environment variable for compile time
-    println!("cargo:rustc-env=BUILD_TIME={}", chrono::Utc::now().timestamp());
-    
-    // Add library search path
-    println!("cargo:rustc-link-search=native=/usr/local/lib");
-    
-    // Link external library
-    println!("cargo:rustc-link-lib=static=mylib");
-    
-    // Set configuration flag
-    if cfg!(feature = "ssl") {
-        println!("cargo:rustc-cfg=feature=\"ssl\"");
-    }
-    
-    // Generate code
-    generate_bindings();
-}
-
-fn generate_bindings() {
-    let bindings = bindgen::Builder::default()
-        .header("wrapper.h")
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
-        .generate()
-        .expect("Unable to generate bindings");
-
-    let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
-    bindings
-        .write_to_file(out_path.join("bindings.rs"))
-        .expect("Couldn't write bindings!");
-}
-```
-
-## Cross-Platform Building
-
-### Cross-Compilation Setup
-```bash
-# Install cross tool for easier cross-compilation
-cargo install cross
-
-# Build for different platforms using cross
-cross build --target aarch64-unknown-linux-gnu
-cross build --target x86_64-pc-windows-gnu
-cross build --target x86_64-apple-darwin
-```
-
-### Platform-Specific Dependencies
-```toml
-[target.'cfg(windows)'.dependencies]
-winapi = { version = "0.3", features = ["winuser"] }
-
-[target.'cfg(unix)'.dependencies]
-nix = "0.26"
-
-[target.'cfg(target_os = "macos")'.dependencies]
-core-foundation = "0.9"
-
-[target.'cfg(target_arch = "wasm32")'.dependencies]
-wasm-bindgen = "0.2"
-```
-
-### Build Matrix Script
+### Production Build Script
 ```bash
 #!/bin/bash
-# build-matrix.sh
+# build.sh
 set -e
 
-TARGETS=(
-    "x86_64-unknown-linux-gnu"
-    "x86_64-pc-windows-gnu" 
-    "x86_64-apple-darwin"
-    "aarch64-unknown-linux-gnu"
-    "aarch64-apple-darwin"
-)
+APP_NAME="my-rust-app"
+VERSION=$(git describe --tags --always --dirty)
 
-PROJECT_NAME="my-app"
-VERSION=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
-
-echo "Building $PROJECT_NAME v$VERSION for multiple targets..."
+echo "Building $APP_NAME version $VERSION..."
 
 # Clean previous builds
 cargo clean
 
-# Create release directory
-mkdir -p releases
+# Build for multiple targets
+targets=(
+    "x86_64-unknown-linux-gnu"
+    "x86_64-apple-darwin"
+    "x86_64-pc-windows-gnu"
+    "aarch64-unknown-linux-gnu"
+)
 
-for target in "${TARGETS[@]}"; do
+for target in "${targets[@]}"; do
     echo "Building for $target..."
     
-    # Add target if not installed
-    rustup target add $target 2>/dev/null || true
+    # Ensure target is installed
+    rustup target add "$target"
     
-    # Build for target
-    if command -v cross >/dev/null 2>&1; then
-        cross build --release --target $target
-    else
-        cargo build --release --target $target
-    fi
+    # Build with optimizations
+    cargo build --release --target "$target"
     
-    # Package binary
-    cd target/$target/release
+    # Create distribution directory
+    mkdir -p "dist/$target"
     
+    # Copy binary to dist
     if [[ "$target" == *"windows"* ]]; then
-        zip -9 "../../../releases/${PROJECT_NAME}-${VERSION}-${target}.zip" "${PROJECT_NAME}.exe"
+        cp "target/$target/release/${APP_NAME}.exe" "dist/$target/"
     else
-        tar -czf "../../../releases/${PROJECT_NAME}-${VERSION}-${target}.tar.gz" "$PROJECT_NAME"
+        cp "target/$target/release/${APP_NAME}" "dist/$target/"
     fi
-    
-    cd ../../..
-    
-    echo "✓ Built and packaged for $target"
 done
 
-echo "All builds complete! Check releases/ directory."
+echo "Build complete. Binaries available in dist/ directory."
 ```
 
-## Build Optimization
+### Docker Build
+```dockerfile
+# Multi-stage Dockerfile for optimized Rust builds
+FROM rust:1.75 AS builder
 
-### Size Optimization
+WORKDIR /app
+COPY . .
+
+# Build dependencies separately for better caching
+RUN cargo build --release --bin my-app
+
+# Runtime stage
+FROM debian:bookworm-slim
+
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /app/target/release/my-app /usr/local/bin/my-app
+
+EXPOSE 8080
+CMD ["my-app"]
+```
+
+## Build Profiles
+
+### Custom Profile Configuration
 ```toml
+# Cargo.toml
+[profile.dev]
+debug = true
+opt-level = 0
+overflow-checks = true
+
 [profile.release]
-opt-level = "z"     # Optimize for size
+debug = false
+opt-level = 3
 lto = true
 codegen-units = 1
-panic = "abort"
+panic = 'abort'
 strip = true
 
-# Additional size reduction
-[profile.release.package."*"]
-opt-level = "z"
+[profile.profiling]
+inherits = "release"
+debug = true
+strip = false
+
+[profile.bench]
+inherits = "release"
+debug = true
 ```
 
-### Build Speed Optimization
-```toml
-# For faster debug builds
-[profile.dev]
-opt-level = 1       # Some optimization
-incremental = true
-codegen-units = 512 # More parallel codegen units
-
-# Use mold linker for faster linking (Linux)
-[target.x86_64-unknown-linux-gnu]
-linker = "clang"
-rustflags = ["-C", "link-arg=-fuse-ld=mold"]
-```
-
-### Memory Usage Optimization
+### Build with Custom Profile
 ```bash
-# Set environment variables to limit memory usage
-export CARGO_BUILD_JOBS=2
-export RUSTC_WRAPPER=sccache  # Use sccache for caching
+# Build with profiling profile
+cargo build --profile profiling
 
-# Build with limited parallelism
-cargo build --jobs 2
+# Build for benchmarking
+cargo build --profile bench
 ```
 
-## Build Tools Integration
+## Advanced Build Options
 
-### Makefile Integration
-```makefile
-# Makefile
-.PHONY: build build-release clean test
+### Link Time Optimization (LTO)
+```bash
+# Enable LTO for smaller, faster binaries
+RUSTFLAGS="-C lto=fat" cargo build --release
 
-CARGO_FLAGS := --color always
-
-build:
-	cargo build $(CARGO_FLAGS)
-
-build-release:
-	cargo build --release $(CARGO_FLAGS)
-
-build-all-targets:
-	cargo build --all-targets $(CARGO_FLAGS)
-
-clean:
-	cargo clean
-
-test:
-	cargo test $(CARGO_FLAGS)
-
-install:
-	cargo install --path .
-
-# Cross-compilation targets
-build-linux:
-	cross build --target x86_64-unknown-linux-gnu --release
-
-build-windows:
-	cross build --target x86_64-pc-windows-gnu --release
-
-build-macos:
-	cross build --target x86_64-apple-darwin --release
-
-build-all: build-linux build-windows build-macos
+# Enable thin LTO (faster compile, good optimization)
+RUSTFLAGS="-C lto=thin" cargo build --release
 ```
 
-### CI/CD Integration
-```yaml
-# .github/workflows/build.yml
-name: Build
+### Target-specific Optimizations
+```bash
+# Optimize for current CPU
+RUSTFLAGS="-C target-cpu=native" cargo build --release
 
-on: [push, pull_request]
+# Optimize for specific CPU features
+RUSTFLAGS="-C target-feature=+avx2,+fma" cargo build --release
+```
 
-jobs:
-  build:
-    name: Build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        build: [linux, macos, windows]
-        include:
-          - build: linux
-            os: ubuntu-latest
-            target: x86_64-unknown-linux-gnu
-          - build: macos
-            os: macos-latest
-            target: x86_64-apple-darwin
-          - build: windows
-            os: windows-latest
-            target: x86_64-pc-windows-msvc
+### Memory-safe Release Builds
+```bash
+# Build with additional security features
+RUSTFLAGS="-C relocation-model=pie -C link-arg=-pie" cargo build --release
 
-    steps:
-    - uses: actions/checkout@v3
+# Build with stack overflow protection
+RUSTFLAGS="-C link-arg=-Wl,-z,stack-size=2097152" cargo build --release
+```
+
+## Workspace Builds
+
+### Building Workspace Members
+```bash
+# Build all workspace members
+cargo build --workspace
+
+# Build specific workspace member
+cargo build --package my-lib
+
+# Build multiple packages
+cargo build --package my-lib --package my-app
+
+# Exclude specific packages
+cargo build --workspace --exclude integration-tests
+```
+
+## Build Caching
+
+### Using sccache for Faster Builds
+```bash
+# Install sccache
+cargo install sccache
+
+# Set environment variable
+export RUSTC_WRAPPER=sccache
+
+# Build with caching
+cargo build --release
+
+# Check cache statistics
+sccache --show-stats
+```
+
+### Using cargo-chef for Docker Builds
+```dockerfile
+FROM rust:1.75 AS planner
+WORKDIR /app
+RUN cargo install cargo-chef
+COPY . .
+RUN cargo chef prepare --recipe-path recipe.json
+
+FROM rust:1.75 AS cacher
+WORKDIR /app
+RUN cargo install cargo-chef
+COPY --from=planner /app/recipe.json recipe.json
+RUN cargo chef cook --release --recipe-path recipe.json
+
+FROM rust:1.75 AS builder
+WORKDIR /app
+COPY . .
+COPY --from=cacher /app/target target
+RUN cargo build --release --bin my-app
+```
+
+## Error Handling and Debugging
+
+### Build with Debug Information
+```bash
+# Build with debug symbols
+cargo build --release --config 'profile.release.debug=true'
+
+# Build with backtrace support
+RUST_BACKTRACE=1 cargo build
+```
+
+### Common Build Flags
+```bash
+# Show all compiler warnings
+cargo build -- -W warnings
+
+# Treat warnings as errors
+cargo build -- -D warnings
+
+# Show timing information
+cargo build --timings
+
+# Show dependency tree
+cargo build --unit-graph
+```
+
+## Build Scripts
+
+### Custom Build Script (build.rs)
+```rust
+use std::env;
+use std::path::PathBuf;
+
+fn main() {
+    // Tell Cargo to rerun if build.rs changes
+    println!("cargo:rerun-if-changed=build.rs");
     
-    - name: Install Rust
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        target: ${{ matrix.target }}
-        override: true
+    // Set version from git
+    let output = std::process::Command::new("git")
+        .args(&["describe", "--tags", "--always", "--dirty"])
+        .output()
+        .unwrap();
     
-    - name: Build
-      run: cargo build --release --target ${{ matrix.target }}
+    let version = String::from_utf8(output.stdout).unwrap();
+    println!("cargo:rustc-env=GIT_VERSION={}", version.trim());
     
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: ${{ matrix.build }}-binary
-        path: target/${{ matrix.target }}/release/
-```
-
-## Cargo Features and Workspace
-
-### Feature Management
-```toml
-[features]
-default = ["std"]
-std = []
-serde_support = ["serde", "serde_derive"]
-async = ["tokio", "futures"]
-tls = ["rustls", "webpki"]
-
-[dependencies]
-serde = { version = "1.0", optional = true }
-serde_derive = { version = "1.0", optional = true }
-tokio = { version = "1.0", optional = true }
-futures = { version = "0.3", optional = true }
-```
-
-### Workspace Configuration
-```toml
-# Cargo.toml (workspace root)
-[workspace]
-members = [
-    "app",
-    "lib",
-    "cli",
-    "server"
-]
-
-# Shared dependencies
-[workspace.dependencies]
-serde = { version = "1.0", features = ["derive"] }
-tokio = { version = "1.0", features = ["full"] }
-
-# Shared metadata
-[workspace.metadata.release]
-publish = false
-pre-release-replacements = []
+    // Link native library
+    println!("cargo:rustc-link-lib=sqlite3");
+    
+    // Set custom cfg flags
+    if env::var("PROFILE").unwrap() == "release" {
+        println!("cargo:rustc-cfg=release_build");
+    }
+}
 ```
 
 ## Best Practices
 
-- Use `cargo build --release` for production builds
-- Enable LTO for maximum optimization in release builds
-- Use cross-compilation for targeting multiple platforms
-- Implement proper build scripts for complex projects
-- Cache builds with sccache to speed up compilation
-- Use workspaces for multi-crate projects
-- Test builds on CI/CD for all target platforms
-- Strip symbols in release builds to reduce size
-- Use feature flags to make dependencies optional
-- Profile build times with `cargo build --timings`
+### Optimization Guidelines
+- Use `--release` for production builds
+- Enable LTO for maximum optimization
+- Use `strip = true` to reduce binary size
+- Consider `panic = 'abort'` for smaller binaries
+- Use `codegen-units = 1` for maximum optimization
+
+### Cross-Compilation Tips
+- Install targets with `rustup target add`
+- Use `cross` crate for complex cross-compilation
+- Test cross-compiled binaries on target platforms
+- Consider using Docker for consistent builds
+
+### Build Performance
+- Use `sccache` for compilation caching
+- Leverage `cargo-chef` for Docker builds
+- Split dependencies and application code builds
+- Use parallel compilation with `-j` flag
+- Consider incremental compilation for development
+
+### Security Considerations
+- Use `cargo audit` to check for vulnerabilities
+- Enable overflow checks in debug builds
+- Use `strip = true` to remove debug symbols
+- Consider Position Independent Executables (PIE)
+- Regular dependency updates with `cargo update`

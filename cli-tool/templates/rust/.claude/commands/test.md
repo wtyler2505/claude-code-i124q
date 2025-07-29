@@ -1,10 +1,10 @@
-# Rust Testing Framework
+# Rust Test Runner
 
-Run comprehensive tests including unit tests, integration tests, benchmarks, and property-based tests.
+Run Rust tests with comprehensive coverage reporting, benchmarking, and advanced testing strategies.
 
 ## Purpose
 
-This command helps you run and organize Rust tests effectively using cargo's built-in testing framework and additional testing libraries.
+This command helps you run Rust tests effectively with proper configuration, coverage analysis, doctests, and integration testing.
 
 ## Usage
 
@@ -14,10 +14,11 @@ This command helps you run and organize Rust tests effectively using cargo's bui
 
 ## What this command does
 
-1. **Runs unit and integration tests** with cargo test
-2. **Executes benchmarks** for performance analysis
-3. **Generates test coverage reports** with coverage tools  
-4. **Supports property-based testing** with proptest
+1. **Runs unit tests** with comprehensive output
+2. **Executes integration tests** and doctests
+3. **Generates coverage reports** with detailed analysis
+4. **Runs benchmarks** for performance validation
+5. **Provides property-based testing** capabilities
 
 ## Example Commands
 
@@ -29,145 +30,164 @@ cargo test
 # Run tests with output
 cargo test -- --nocapture
 
+# Run tests with verbose output
+cargo test --verbose
+
 # Run specific test
-cargo test test_function_name
+cargo test test_user_creation
 
 # Run tests matching pattern
 cargo test user_
 
 # Run tests in specific module
-cargo test user::tests
-
-# Run ignored tests
-cargo test -- --ignored
-
-# Run both normal and ignored tests
-cargo test -- --include-ignored
+cargo test tests::user_module
 ```
 
-### Test Configuration
-```bash
-# Run tests with specific number of threads
-cargo test -- --test-threads=1
-
-# Run tests verbosely
-cargo test -- --verbose
-
-# Show test output even for passing tests
-cargo test -- --show-output
-
-# Run tests and stop on first failure
-cargo test -- --fail-fast
-
-# Set custom test timeout
-cargo test -- --timeout 60
-```
-
-### Integration and Doc Tests
+### Test Categories
 ```bash
 # Run only unit tests
 cargo test --lib
 
 # Run only integration tests
-cargo test --test integration_test
+cargo test --test integration
 
-# Run only documentation tests
+# Run only doctests
 cargo test --doc
 
-# Run specific integration test file
-cargo test --test user_integration
+# Run only binary tests
+cargo test --bin my-app
+
+# Run tests for specific package
+cargo test --package my-lib
 ```
 
-## Test Organization
+### Advanced Testing Options
+```bash
+# Run tests with threads
+cargo test -- --test-threads=4
+
+# Run tests sequentially
+cargo test -- --test-threads=1
+
+# Run ignored tests
+cargo test -- --ignored
+
+# Run tests with timeout
+timeout 30s cargo test
+
+# Run tests with environment variables
+RUST_TEST_THREADS=1 cargo test
+```
+
+## Test Coverage
+
+### Using cargo-tarpaulin
+```bash
+# Install tarpaulin
+cargo install cargo-tarpaulin
+
+# Generate coverage report
+cargo tarpaulin --out html
+
+# Generate coverage with specific format
+cargo tarpaulin --out xml --output-dir coverage/
+
+# Coverage for specific packages
+cargo tarpaulin --packages my-lib,my-app
+
+# Coverage excluding certain files
+cargo tarpaulin --exclude-files "tests/*" "examples/*"
+```
+
+### Using cargo-llvm-cov
+```bash
+# Install llvm-cov
+cargo install cargo-llvm-cov
+
+# Generate coverage report
+cargo llvm-cov
+
+# Generate HTML coverage report
+cargo llvm-cov --html --output-dir coverage/
+
+# Generate coverage for all targets
+cargo llvm-cov --all-targets --lcov --output-path coverage.lcov
+```
+
+## Writing Effective Tests
 
 ### Unit Tests
 ```rust
-// src/lib.rs or src/main.rs
-pub fn add(a: i32, b: i32) -> i32 {
-    a + b
-}
-
-pub fn divide(a: f64, b: f64) -> Result<f64, String> {
-    if b == 0.0 {
-        Err("Division by zero".to_string())
-    } else {
-        Ok(a / b)
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::collections::HashMap;
 
     #[test]
-    fn test_add() {
-        assert_eq!(add(2, 3), 5);
-        assert_eq!(add(-1, 1), 0);
-        assert_eq!(add(0, 0), 0);
+    fn test_user_creation() {
+        let user = User::new("John", "john@example.com");
+        assert_eq!(user.name, "John");
+        assert_eq!(user.email, "john@example.com");
     }
 
     #[test]
-    fn test_divide_success() {
-        assert_eq!(divide(10.0, 2.0), Ok(5.0));
-        assert_eq!(divide(3.0, 2.0), Ok(1.5));
+    fn test_user_validation() {
+        let user = User::new("", "invalid-email");
+        assert!(user.validate().is_err());
     }
 
     #[test]
-    fn test_divide_by_zero() {
-        assert_eq!(divide(10.0, 0.0), Err("Division by zero".to_string()));
-    }
-
-    #[test]
-    #[should_panic]
-    fn test_panic() {
-        panic!("This test should panic");
-    }
-
-    #[test]
-    #[should_panic(expected = "index out of bounds")]
-    fn test_panic_with_message() {
-        let v = vec![1, 2, 3];
-        v[4]; // This should panic with index out of bounds
+    #[should_panic(expected = "Invalid email")]
+    fn test_user_panic() {
+        User::new("John", "").validate().unwrap();
     }
 
     #[test]
     #[ignore]
     fn expensive_test() {
-        // This test is ignored by default
-        // Run with: cargo test -- --ignored
+        // Test that takes a long time
+        thread::sleep(Duration::from_secs(5));
     }
 }
 ```
 
-### Integration Tests
+### Property-Based Testing
 ```rust
-// tests/integration_test.rs
-use my_crate::*;
+use proptest::prelude::*;
 
-#[test]
-fn test_integration() {
-    let result = add(5, 10);
-    assert_eq!(result, 15);
-}
+proptest! {
+    #[test]
+    fn test_string_reverse_twice_is_identity(s in ".*") {
+        let reversed_twice: String = s.chars().rev()
+            .collect::<String>()
+            .chars().rev()
+            .collect();
+        prop_assert_eq!(s, reversed_twice);
+    }
 
-#[test]
-fn test_full_workflow() {
-    // Test the entire workflow
-    let input = "test input";
-    let processed = process_input(input);
-    let output = generate_output(processed);
-    
-    assert!(output.is_ok());
-    assert_eq!(output.unwrap(), expected_output());
+    #[test]
+    fn test_addition_commutative(a in 0..1000i32, b in 0..1000i32) {
+        prop_assert_eq!(a + b, b + a);
+    }
+
+    #[test]
+    fn test_vec_push_pop(
+        mut vec in prop::collection::vec(any::<i32>(), 0..100),
+        value in any::<i32>()
+    ) {
+        vec.push(value);
+        prop_assert_eq!(vec.pop(), Some(value));
+    }
 }
 ```
 
-### Async Tests
+### Async Testing
 ```rust
 #[cfg(test)]
-mod async_tests {
+mod tests {
     use super::*;
-    
+    use tokio::test;
+
     #[tokio::test]
     async fn test_async_function() {
         let result = async_function().await;
@@ -176,99 +196,58 @@ mod async_tests {
 
     #[tokio::test]
     async fn test_timeout() {
-        let future = slow_async_function();
         let result = tokio::time::timeout(
-            std::time::Duration::from_secs(1), 
-            future
+            Duration::from_secs(1),
+            slow_async_function()
         ).await;
         
-        assert!(result.is_ok());
-    }
-}
-```
-
-## Advanced Testing Patterns
-
-### Property-Based Testing
-```rust
-// Add to Cargo.toml:
-// [dev-dependencies]
-// proptest = "1.0"
-
-use proptest::prelude::*;
-
-proptest! {
-    #[test]
-    fn test_add_commutative(a in 0..1000i32, b in 0..1000i32) {
-        prop_assert_eq!(add(a, b), add(b, a));
+        assert!(result.is_err()); // Should timeout
     }
 
-    #[test]
-    fn test_string_roundtrip(s in ".*") {
-        let encoded = encode(&s);
-        let decoded = decode(&encoded).unwrap();
-        prop_assert_eq!(s, decoded);
-    }
-
-    #[test]
-    fn test_sort_idempotent(mut vec in prop::collection::vec(0..100i32, 0..100)) {
-        let sorted_once = {
-            vec.sort();
-            vec.clone()
-        };
+    #[tokio::test]
+    async fn test_concurrent_operations() {
+        let (tx, rx) = tokio::sync::oneshot::channel();
         
-        vec.sort();
-        prop_assert_eq!(vec, sorted_once);
-    }
-}
-
-// Custom strategies
-prop_compose! {
-    fn valid_email()(
-        name in "[a-z]{1,20}",
-        domain in "[a-z]{1,20}",
-        tld in "[a-z]{2,4}"
-    ) -> String {
-        format!("{}@{}.{}", name, domain, tld)
-    }
-}
-
-proptest! {
-    #[test]
-    fn test_email_validation(email in valid_email()) {
-        prop_assert!(is_valid_email(&email));
+        let handle = tokio::spawn(async move {
+            tx.send("Hello").unwrap();
+        });
+        
+        let result = rx.await.unwrap();
+        assert_eq!(result, "Hello");
+        handle.await.unwrap();
     }
 }
 ```
 
-### Parameterized Tests
+### Integration Tests
 ```rust
-use rstest::*;
+// tests/integration_test.rs
+use my_app::*;
+use std::process::Command;
 
-#[rstest]
-#[case(2, 3, 5)]
-#[case(10, -5, 5)]
-#[case(0, 0, 0)]
-fn test_add_cases(#[case] a: i32, #[case] b: i32, #[case] expected: i32) {
-    assert_eq!(add(a, b), expected);
+#[test]
+fn test_cli_interface() {
+    let output = Command::new("./target/debug/my-app")
+        .arg("--help")
+        .output()
+        .expect("Failed to execute command");
+
+    assert!(output.status.success());
+    assert!(String::from_utf8_lossy(&output.stdout).contains("Usage:"));
 }
 
-#[rstest]
-#[values("hello", "world", "test")]
-fn test_string_length(input: &str) {
-    assert!(input.len() > 0);
-}
-
-#[fixture]
-fn database() -> Database {
-    Database::new_in_memory()
-}
-
-#[rstest]
-fn test_user_creation(database: Database) {
-    let user = User::new("John", "john@example.com");
-    let id = database.insert_user(user).unwrap();
-    assert!(id > 0);
+#[test]
+fn test_api_integration() {
+    let server = start_test_server();
+    let client = reqwest::blocking::Client::new();
+    
+    let response = client
+        .get(&format!("http://localhost:{}/health", server.port()))
+        .send()
+        .unwrap();
+    
+    assert_eq!(response.status(), 200);
+    server.stop();
 }
 ```
 
@@ -279,7 +258,7 @@ use mockall::*;
 #[automock]
 trait UserRepository {
     fn get_user(&self, id: u32) -> Result<User, Error>;
-    fn save_user(&mut self, user: &User) -> Result<(), Error>;
+    fn save_user(&self, user: &User) -> Result<(), Error>;
 }
 
 #[cfg(test)]
@@ -287,107 +266,69 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_user_service_get_user() {
+    fn test_user_service_with_mock() {
         let mut mock_repo = MockUserRepository::new();
-        
         mock_repo
             .expect_get_user()
             .with(eq(1))
             .times(1)
-            .returning(|_| Ok(User { id: 1, name: "John".to_string() }));
+            .returning(|_| Ok(User::new("John", "john@example.com")));
 
-        let service = UserService::new(mock_repo);
+        let service = UserService::new(Box::new(mock_repo));
         let user = service.get_user(1).unwrap();
         
-        assert_eq!(user.id, 1);
         assert_eq!(user.name, "John");
-    }
-
-    #[test]
-    fn test_user_service_save_user() {
-        let mut mock_repo = MockUserRepository::new();
-        let user = User { id: 1, name: "John".to_string() };
-        
-        mock_repo
-            .expect_save_user()
-            .with(eq(user.clone()))
-            .times(1)
-            .returning(|_| Ok(()));
-
-        let mut service = UserService::new(mock_repo);
-        let result = service.save_user(&user);
-        
-        assert!(result.is_ok());
     }
 }
 ```
 
-## Test Coverage
+## Test Organization
 
-### Using cargo-tarpaulin
-```bash
-# Install tarpaulin
-cargo install cargo-tarpaulin
+### Test Structure
+```
+src/
+├── lib.rs
+├── user.rs
+└── user/
+    └── tests.rs
 
-# Run tests with coverage
-cargo tarpaulin
-
-# Generate HTML report
-cargo tarpaulin --out Html
-
-# Generate XML report for CI
-cargo tarpaulin --out Xml
-
-# Exclude files from coverage
-cargo tarpaulin --exclude-files 'src/generated/*'
-
-# Set minimum coverage threshold
-cargo tarpaulin --fail-under 80
+tests/
+├── integration/
+│   ├── api_tests.rs
+│   └── cli_tests.rs
+├── common/
+│   └── mod.rs
+└── integration_test.rs
 ```
 
-### Coverage Configuration
-```toml
-# Cargo.toml
-[package.metadata.tarpaulin]
-exclude = ["src/generated/*", "tests/*"]
-fail-under = 80
-out = ["Html", "Xml"]
-```
+### Test Utilities
+```rust
+// tests/common/mod.rs
+pub fn setup_test_db() -> TestDatabase {
+    TestDatabase::new()
+}
 
-### Using cargo-llvm-cov
-```bash
-# Install cargo-llvm-cov  
-cargo install cargo-llvm-cov
+pub fn create_test_user() -> User {
+    User::new("Test User", "test@example.com")
+}
 
-# Run tests with coverage
-cargo llvm-cov
-
-# Generate HTML report
-cargo llvm-cov --html
-
-# Generate lcov report
-cargo llvm-cov --lcov --output-path coverage.lcov
+pub fn assert_user_valid(user: &User) {
+    assert!(!user.name.is_empty());
+    assert!(user.email.contains('@'));
+}
 ```
 
 ## Benchmarking
 
-### Using Criterion
+### Criterion Benchmarks
 ```rust
-// Add to Cargo.toml:
-// [dev-dependencies]
-// criterion = "0.5"
-//
-// [[bench]]
-// name = "my_benchmark"
-// harness = false
-
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
 fn fibonacci_recursive(n: u64) -> u64 {
     match n {
         0 => 1,
         1 => 1,
-        n => fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2),
+        n => fibonacci_recursive(n-1) + fibonacci_recursive(n-2),
     }
 }
 
@@ -406,24 +347,19 @@ fn criterion_benchmark(c: &mut Criterion) {
     c.bench_function("fib recursive 20", |b| {
         b.iter(|| fibonacci_recursive(black_box(20)))
     });
-
+    
     c.bench_function("fib iterative 20", |b| {
         b.iter(|| fibonacci_iterative(black_box(20)))
     });
-
+    
     let mut group = c.benchmark_group("fibonacci");
-    for i in [10, 15, 20].iter() {
-        group.bench_with_input(
-            format!("recursive/{}", i), 
-            i, 
-            |b, i| b.iter(|| fibonacci_recursive(black_box(*i)))
-        );
-        
-        group.bench_with_input(
-            format!("iterative/{}", i), 
-            i, 
-            |b, i| b.iter(|| fibonacci_iterative(black_box(*i)))
-        );
+    for i in [10, 20, 30].iter() {
+        group.bench_with_input(BenchmarkId::new("recursive", i), i, |b, i| {
+            b.iter(|| fibonacci_recursive(black_box(*i)))
+        });
+        group.bench_with_input(BenchmarkId::new("iterative", i), i, |b, i| {
+            b.iter(|| fibonacci_iterative(black_box(*i)))
+        });
     }
     group.finish();
 }
@@ -440,148 +376,44 @@ cargo bench
 # Run specific benchmark
 cargo bench fibonacci
 
-# Save baseline for comparison
-cargo bench -- --save-baseline before_optimization
+# Run benchmarks with baseline
+cargo bench -- --save-baseline my-baseline
 
 # Compare with baseline
-cargo bench -- --baseline before_optimization
+cargo bench -- --baseline my-baseline
 ```
 
-## Test Helpers and Utilities
+## Test Configuration
 
-### Test Setup and Teardown
-```rust
-use std::sync::Once;
+### Cargo.toml Test Configuration
+```toml
+[dev-dependencies]
+tokio-test = "0.4"
+proptest = "1.0"
+mockall = "0.11"
+criterion = "0.5"
+tarpaulin = "0.25"
 
-static INIT: Once = Once::new();
+[[bench]]
+name = "my_benchmark"
+harness = false
 
-fn setup() {
-    INIT.call_once(|| {
-        env_logger::init();
-        // Other one-time setup
-    });
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_with_setup() {
-        setup();
-        // Your test code here
-    }
-}
+[profile.test]
+debug = true
+opt-level = 0
+overflow-checks = true
 ```
 
-### Test Data Builders
-```rust
-#[cfg(test)]
-mod test_helpers {
-    use super::*;
+## Continuous Integration
 
-    pub struct UserBuilder {
-        id: u32,
-        name: String,
-        email: String,
-        active: bool,
-    }
-
-    impl UserBuilder {
-        pub fn new() -> Self {
-            Self {
-                id: 1,
-                name: "Default User".to_string(),
-                email: "user@example.com".to_string(),
-                active: true,
-            }
-        }
-
-        pub fn with_id(mut self, id: u32) -> Self {
-            self.id = id;
-            self
-        }
-
-        pub fn with_name<S: Into<String>>(mut self, name: S) -> Self {
-            self.name = name.into();
-            self
-        }
-
-        pub fn with_email<S: Into<String>>(mut self, email: S) -> Self {
-            self.email = email.into();
-            self
-        }
-
-        pub fn inactive(mut self) -> Self {
-            self.active = false;
-            self
-        }
-
-        pub fn build(self) -> User {
-            User {
-                id: self.id,
-                name: self.name,
-                email: self.email,
-                active: self.active,
-            }
-        }
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::test_helpers::*;
-
-    #[test]
-    fn test_user_creation() {
-        let user = UserBuilder::new()
-            .with_name("John Doe")
-            .with_email("john@example.com")
-            .build();
-
-        assert_eq!(user.name, "John Doe");
-        assert_eq!(user.email, "john@example.com");
-        assert!(user.active);
-    }
-}
-```
-
-## CI/CD Integration
-
-### GitHub Actions
+### GitHub Actions Example
 ```yaml
 name: Tests
-
 on: [push, pull_request]
 
 jobs:
   test:
-    name: Test
     runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Install Rust
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        override: true
-        components: rustfmt, clippy
-    
-    - name: Run tests
-      run: cargo test --all-features
-    
-    - name: Run clippy
-      run: cargo clippy -- -D warnings
-    
-    - name: Check formatting
-      run: cargo fmt -- --check
-
-  coverage:
-    name: Coverage
-    runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v3
     - uses: actions-rs/toolchain@v1
@@ -589,11 +421,16 @@ jobs:
         toolchain: stable
         override: true
     
-    - name: Install tarpaulin
-      run: cargo install cargo-tarpaulin
+    - name: Run tests
+      run: cargo test --verbose
+    
+    - name: Run integration tests
+      run: cargo test --test integration
     
     - name: Generate coverage
-      run: cargo tarpaulin --verbose --all-features --workspace --timeout 120 --out Xml
+      run: |
+        cargo install cargo-tarpaulin
+        cargo tarpaulin --out xml
     
     - name: Upload coverage
       uses: codecov/codecov-action@v3
@@ -601,17 +438,73 @@ jobs:
         file: ./cobertura.xml
 ```
 
+## Documentation Tests
+
+### Doctest Examples
+```rust
+/// Adds two numbers together.
+///
+/// # Examples
+///
+/// ```
+/// use my_lib::add;
+/// assert_eq!(add(2, 3), 5);
+/// ```
+///
+/// # Panics
+///
+/// This function will panic if the result overflows:
+///
+/// ```should_panic
+/// use my_lib::add;
+/// add(u32::MAX, 1);
+/// ```
+pub fn add(a: u32, b: u32) -> u32 {
+    a + b
+}
+```
+
+### Running Doctests
+```bash
+# Run only doctests
+cargo test --doc
+
+# Run doctests for specific crate
+cargo test --doc --package my-lib
+
+# Run doctests with verbose output
+cargo test --doc -- --nocapture
+```
+
 ## Best Practices
 
-- Write tests for all public APIs
+### Test Organization
+- Keep unit tests in the same file as the code
+- Use integration tests for testing public APIs
+- Create test utilities in `tests/common/`
 - Use descriptive test names that explain the scenario
-- Test both success and failure cases
-- Keep tests independent and deterministic  
+
+### Test Quality
+- Test both happy path and error conditions
 - Use property-based testing for complex logic
-- Mock external dependencies in unit tests
-- Write integration tests for user workflows
-- Measure and maintain good test coverage
-- Use benchmarks to prevent performance regressions
-- Run tests in CI/CD pipelines
-- Use test data builders for complex test objects
-- Document test setup requirements
+- Mock external dependencies
+- Keep tests isolated and independent
+- Use `#[should_panic]` for expected panics
+
+### Performance Testing
+- Use criterion for benchmarking
+- Benchmark critical code paths
+- Compare performance across changes
+- Set performance budgets in CI
+
+### Coverage Goals
+- Aim for 80%+ test coverage
+- Use coverage tools to identify untested code
+- Focus on testing critical business logic
+- Don't chase 100% coverage at the expense of test quality
+
+### Async Testing
+- Use `tokio::test` for async tests
+- Test timeout scenarios
+- Test concurrent operations
+- Mock async dependencies appropriately
