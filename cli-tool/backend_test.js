@@ -57,9 +57,6 @@ class MCPDiscoveryTester {
       // Test 6: Demo Script
       await this.testDemoScript();
       
-      // Generate final report
-      this.generateTestReport();
-      
     } catch (error) {
       console.error(chalk.red('Test suite failed:'), error.message);
       throw error;
