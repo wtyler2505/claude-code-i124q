@@ -14,6 +14,7 @@ const { runHookStats } = require('./hook-stats');
 const { runMCPStats } = require('./mcp-stats');
 const { runAnalytics } = require('./analytics');
 const { runHealthCheck } = require('./health-check');
+const { AIAgentManager } = require('./ai-agents');
 
 async function showMainMenu() {
   console.log('');
