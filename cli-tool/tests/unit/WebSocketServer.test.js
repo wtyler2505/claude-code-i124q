@@ -4,10 +4,15 @@
  */
 
 const WebSocketServer = require('../../src/analytics/notifications/WebSocketServer');
-const WebSocket = require('ws');
 
-// Mock the WebSocket library
-jest.mock('ws');
+// Mock the WebSocket library properly
+jest.mock('ws', () => {
+  return {
+    Server: jest.fn()
+  };
+});
+
+const WebSocket = require('ws');
 
 describe('WebSocketServer', () => {
   let webSocketServer;
