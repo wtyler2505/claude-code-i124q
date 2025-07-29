@@ -64,6 +64,11 @@ async function showMainMenu() {
     return await runAIAgents({});
   }
   
+  if (initialChoice.action === 'mcp-discovery') {
+    console.log(chalk.blue('🔌 Launching MCP Discovery System...'));
+    return await runMCPDiscovery({});
+  }
+  
   if (initialChoice.action === 'analytics') {
     console.log(chalk.blue('📊 Launching Claude Code Analytics Dashboard...'));
     await runAnalytics({});
