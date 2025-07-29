@@ -148,7 +148,7 @@ class StateCalculator {
 
     // Handle empty messages array
     if (messages.length === 0) {
-      return minutesAgo < 5 ? 'active' : 'idle';
+      return 'idle'; // Empty conversation is always idle
     }
 
     // Filter out malformed messages
