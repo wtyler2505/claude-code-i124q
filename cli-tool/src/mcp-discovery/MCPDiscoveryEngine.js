@@ -74,9 +74,9 @@ class MCPDiscoveryEngine {
       installedServers: report.summary.installed,
       configuredServers: report.summary.configured,
       categories: Object.keys(report.categories).length,
-      topPriority: report.topServers.length,
-      issues: report.issues.length,
-      recommendations: report.recommendations.length,
+      topPriority: (report.topServers || []).length,
+      issues: (report.issues || []).length,
+      recommendations: (report.recommendations || []).length,
       timestamp: this.discoveryResults.timestamp
     };
   }
