@@ -31,6 +31,11 @@ async function showMainMenu() {
         short: 'AI Agents'
       },
       {
+        name: '🔌 MCP Discovery - Intelligent MCP server discovery and management',
+        value: 'mcp-discovery',
+        short: 'MCP Discovery'
+      },
+      {
         name: '📊 Analytics Dashboard - Monitor your Claude Code usage and sessions',
         value: 'analytics',
         short: 'Analytics Dashboard'
