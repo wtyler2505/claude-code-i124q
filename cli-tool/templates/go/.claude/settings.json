@@ -1,0 +1,143 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit",
+      "MultiEdit",
+      "Write",
+      "Bash(go:*)",
+      "Bash(gofmt:*)",
+      "Bash(golint:*)",
+      "Bash(staticcheck:*)",
+      "Bash(gosec:*)",
+      "Bash(goimports:*)",
+      "Bash(dlv:*)",
+      "Bash(git:*)",
+      "Bash(make:*)",
+      "Bash(docker:*)"
+    ],
+    "deny": [
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(rm -rf:*)"
+    ],
+    "defaultMode": "allowEdits"
+  },
+  "env": {
+    "BASH_DEFAULT_TIMEOUT_MS": "120000",
+    "BASH_MAX_OUTPUT_LENGTH": "25000",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
+    "CGO_ENABLED": "0",
+    "GOOS": "linux",
+    "GOARCH": "amd64"
+  },
+  "includeCoAuthoredBy": true,
+  "cleanupPeriodDays": 30,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '\"\\(.tool_input.command) - \\(.tool_input.description // \"No description\")\"' >> ~/.claude/bash-command-log.txt"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"); CONTENT=$(echo $STDIN_JSON | jq -r '.tool_input.content // \"\"); if [[ \"$FILE\" =~ \\.go$ ]] && echo \"$CONTENT\" | grep -q 'fmt\\.Print'; then echo 'Warning: fmt.Print statements should be replaced with proper logging' >&2; exit 2; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" == \"go.mod\" ]] || [[ \"$FILE\" == \"go.sum\" ]]; then echo 'Checking for vulnerable dependencies...'; if command -v govulncheck >/dev/null 2>&1; then govulncheck ./...; else echo 'govulncheck not found. Install with: go install golang.org/x/vuln/cmd/govulncheck@latest'; fi; fi",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.go$ ]]; then gofmt -s -w \"$FILE\" 2>/dev/null || echo 'gofmt skipped (not installed)'; fi",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.go$ ]]; then goimports -w \"$FILE\" 2>/dev/null || echo 'goimports skipped (not installed)'; fi",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.go$ ]]; then RESULT=$(staticcheck \"$FILE\" 2>&1); if [ $? -ne 0 ] && command -v staticcheck >/dev/null 2>&1; then echo \"Staticcheck issues found: $RESULT\" >&2; exit 2; fi; fi",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(echo $STDIN_JSON | jq -r '.tool_input.file_path // \"\"'); if [[ \"$FILE\" =~ \\.go$ && \"$FILE\" != *\"_test.go\" ]]; then DIR=$(dirname \"$FILE\"); BASENAME=$(basename \"$FILE\" .go); TEST_FILE=\"$DIR/${BASENAME}_test.go\"; if [ -f \"$TEST_FILE\" ]; then echo \"Running tests for $TEST_FILE...\"; go test \"$DIR\" -v -run \"Test$(echo $BASENAME | sed 's/.*/\\u&/')\"; fi; fi",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"Claude Code notification: $(date)\" >> ~/.claude/notifications.log"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ -f go.mod && $(git status --porcelain | grep '\\.go$') ]]; then echo 'Running linter on changed Go files...'; if command -v staticcheck >/dev/null 2>&1; then staticcheck $(git diff --name-only --diff-filter=ACMR | grep '\\.go$' | xargs dirname | sort -u); else echo 'Staticcheck not found'; fi; fi",
+            "timeout": 60
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ -f go.mod && $(git status --porcelain | grep '\\.go$') ]]; then echo 'Running security scan on changed files...'; if command -v gosec >/dev/null 2>&1; then gosec $(git diff --name-only --diff-filter=ACMR | grep '\\.go$' | xargs dirname | sort -u); else echo 'gosec not found. Install with: go install github.com/securecodewarrior/gosec/v2/cmd/gosec@latest'; fi; fi",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
