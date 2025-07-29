@@ -14,10 +14,10 @@ const { promisify } = require('util');
 const execAsync = promisify(exec);
 
 // Import MCP Discovery components
-const MCPServerDetector = require('./cli-tool/src/mcp-discovery/MCPServerDetector');
-const MCPServerAnalyzer = require('./cli-tool/src/mcp-discovery/MCPServerAnalyzer');
-const MCPDiscoveryEngine = require('./cli-tool/src/mcp-discovery/MCPDiscoveryEngine');
-const { MCPServerManager } = require('./cli-tool/src/mcp-discovery');
+const MCPServerDetector = require('./src/mcp-discovery/MCPServerDetector');
+const MCPServerAnalyzer = require('./src/mcp-discovery/MCPServerAnalyzer');
+const MCPDiscoveryEngine = require('./src/mcp-discovery/MCPDiscoveryEngine');
+const { MCPServerManager } = require('./src/mcp-discovery');
 
 class MCPDiscoveryTester {
   constructor() {
