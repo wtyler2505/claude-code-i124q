@@ -429,6 +429,53 @@ async function createClaudeConfig(options = {}) {
     return;
   }
   
+  // Handle AI agents
+  if (options.aiAgents || options.agentsAi) {
+    await runAIAgents(options);
+    return;
+  }
+  
+  // Handle specific AI agent options
+  if (options.agentReview) {
+    const agentManager = new AIAgentManager(targetDir);
+    const initialized = await agentManager.initializeAgents();
+    if (initialized) {
+      await agentManager.runCodeReview({ projectReview: true, securityAnalysis: true });
+      await agentManager.cleanup();
+    }
+    return;
+  }
+  
+  if (options.agentOptimize) {
+    const agentManager = new AIAgentManager(targetDir);
+    const initialized = await agentManager.initializeAgents();
+    if (initialized) {
+      await agentManager.runCodeOptimization({ projectAnalysis: true, strategy: true });
+      await agentManager.cleanup();
+    }
+    return;
+  }
+  
+  if (options.agentDocs) {
+    const agentManager = new AIAgentManager(targetDir);
+    const initialized = await agentManager.initializeAgents();
+    if (initialized) {
+      await agentManager.runDocumentationGeneration({ readme: true, architecture: true, writeFiles: true });
+      await agentManager.cleanup();
+    }
+    return;
+  }
+  
+  if (options.agentComprehensive) {
+    const agentManager = new AIAgentManager(targetDir);
+    const initialized = await agentManager.initializeAgents();
+    if (initialized) {
+      await agentManager.runComprehensiveAnalysis({ writeFiles: true });
+      await agentManager.cleanup();
+    }
+    return;
+  }
+  
   // Handle health check
   let shouldRunSetup = false;
   if (options.healthCheck || options.health || options.check || options.verify) {
