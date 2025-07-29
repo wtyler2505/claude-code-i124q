@@ -3,10 +3,6 @@
  * Tests API communication and caching functionality
  */
 
-// Load the DataService class
-const fs = require('fs');
-const path = require('path');
-
 // Load DataService from the actual file
 const DataService = require('../../src/analytics-web/services/DataService');
 
