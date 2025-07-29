@@ -764,7 +764,8 @@ async function main() {
   const tester = new MCPDiscoveryTester();
   
   try {
-    const results = await tester.runAllTests();
+    await tester.runAllTests();
+    const results = tester.generateTestReport();
     
     // Exit with appropriate code
     process.exit(results.totalFailed > 0 ? 1 : 0);
